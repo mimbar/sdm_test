@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/kitchen",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Kitchen\\Providers\\KitchenServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Kitchen\\": ""
+        }
+    }
+}

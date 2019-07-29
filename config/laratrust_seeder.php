@@ -2,7 +2,7 @@
 
 return [
     'role_structure' => [
-        'superadministrator' => [
+        'ironman' => [
             'users' => 'c,r,u,d',
             'acl' => 'c,r,u,d',
             'profile' => 'r,u'
@@ -13,11 +13,6 @@ return [
         ],
         'user' => [
             'profile' => 'r,u'
-        ],
-    ],
-    'permission_structure' => [
-        'cru_user' => [
-            'profile' => 'c,r,u'
         ],
     ],
     'permissions_map' => [
