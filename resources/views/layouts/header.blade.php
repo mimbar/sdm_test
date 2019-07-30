@@ -28,9 +28,9 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a href="{{ route('profil.index') }}" class="dropdown-item"><i class="icon-user-plus"></i> Profil</a>
+                    <a href="" class="dropdown-item"><i class="icon-user-plus"></i> Profil</a>
                     <div class="dropdown-divider"></div>
-                    <a href="{{ route('auth.logout') }}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+                    <a href="" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
                 </div>
             </li>
         </ul>

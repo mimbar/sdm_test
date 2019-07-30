@@ -14,7 +14,7 @@
           type="text/css">
     <link href="{{ asset('assets/batagor/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/batagor/css/bootstrap_limitless.min.css') }} " rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/batagor/global_assets/css/icons/fontawesome/styles.min.css') }} " rel="stylesheet"
+    <link href="{{ asset('assets/batagor/global_assets/css/icons/fa5/css/all.min.css') }} " rel="stylesheet"
           type="text/css">
     <link href="{{ asset('assets/batagor/css/layout.min.css') }} " rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/batagor/css/components.min.css') }} " rel="stylesheet" type="text/css">
@@ -56,11 +56,7 @@
 
 
 <!-- Secondary navbar -->
-@if(\Illuminate\Support\Facades\Auth::user()->hasRole('Admin'))
-    @include('layouts.menus.admin')
-@else
-    @include('layouts.menus.user')
-@endif
+    @include('layouts.menu')
 <!-- /secondary navbar -->
 
 
