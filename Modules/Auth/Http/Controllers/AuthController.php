@@ -61,6 +61,7 @@ class AuthController extends Controller
     {
         try {
             Auth::logout();
+            session()->flush();
             return redirect()->route('auth.login');
         } catch (\Exception $exception) {
             return $exception;

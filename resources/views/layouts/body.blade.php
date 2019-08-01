@@ -39,6 +39,7 @@
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/notifications/noty.min.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/inputs/duallistbox/duallistbox.min.js') }}"></script>
 
     <script src="{{ asset('assets/batagor/js/app.js') }}"></script>
     <!-- /theme JS files -->
@@ -80,7 +81,18 @@
 
 <script>
     // Setting datatable defaults
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $.extend($.fn.dataTable.defaults, {
+        "ajax": {
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            "type": "POST"
+        },
         "processing": true,
         "serverSide": true,
         dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
@@ -92,6 +104,10 @@
         "locale": {
             "format": "YYYY-MM-DD",
         }
+    });
+
+    $('.dt').DataTable({
+        "serverSide": false,
     });
 </script>
 @include('layouts.alerts')

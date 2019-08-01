@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Hades
 {
@@ -15,6 +16,13 @@ class Hades
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user()) {
+            return $next($request);
+        }
+
+        return redirect()->route('auth.login')->with('loginStatus', [
+            'code' => 401,
+            'message' => "Silakan Login Dengan <i>Credentials</i> yang telah diberikan."
+        ]);
     }
 }

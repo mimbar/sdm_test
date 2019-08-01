@@ -4,7 +4,9 @@ return [
     'role_structure' => [
         'ironman' => [
             'users' => 'c,r,u,d',
-            'acl' => 'c,r,u,d',
+            'roles' => 'c,r,u,d',
+            'permissions' => 'c,r,u,d',
+            'assign' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
         'administrator' => [

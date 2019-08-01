@@ -5,75 +5,182 @@ namespace Modules\Kitchen\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Auth\Entities\Permission;
+use Modules\Auth\Entities\Role;
 
 class KitchenController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
-    public function index()
+
+    public function usersIndex()
     {
-        return view('kitchen::index');
+        return view('kitchen::users');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
+    public function usersCreate()
     {
-        return view('kitchen::create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function usersUpdate()
     {
-        //
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
+    public function usersDelete()
     {
-        return view('kitchen::show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
+    public function rolesIndex()
     {
-        return view('kitchen::edit');
+        $roles = Role::all();
+        return view('kitchen::roles', compact('roles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
+    public function rolesCreate(Request $request)
     {
-        //
+        try {
+            $roles = new Role([
+                'name' => $request->input('name'),
+                'display_name' => $request->input('display_name'),
+                'description' => $request->input('description'),
+            ]);
+            $roles->save();
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        } catch (\Exception $exception) {
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
+            ]);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
+    public function rolesUpdate(Request $request)
     {
-        //
+        try {
+            $roles = Role::find($request->input('id'));
+            $roles->name = $request->input('name');
+            $roles->display_name = $request->input('display_name');
+            $roles->description = $request->input('description');
+
+            $roles->save();
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        } catch (\Exception $exception) {
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') > 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal menyunting data"
+            ]);
+        }
     }
+
+    public function rolesDelete(Request $request)
+    {
+        try {
+            $roles = Role::find($request->input('id'));
+            $roles->delete();
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        } catch (\Exception $exception) {
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') > 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal menghapus data"
+            ]);
+        }
+    }
+
+
+    public function permissionsIndex()
+    {
+        $permissions = Permission::all();
+        return view('kitchen::permissions', compact('permissions'));
+    }
+
+    public function permissionsCreate(Request $request)
+    {
+        try {
+            $permissions = new Permission([
+                'name' => $request->input('name'),
+                'display_name' => $request->input('display_name'),
+                'description' => $request->input('description'),
+            ]);
+            $permissions->save();
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        } catch (\Exception $exception) {
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
+            ]);
+        }
+    }
+
+    public function permissionsUpdate(Request $request)
+    {
+        try {
+            $permissions = Permission::find($request->input('id'));
+            $permissions->name = $request->input('name');
+            $permissions->display_name = $request->input('display_name');
+            $permissions->description = $request->input('description');
+
+            $permissions->save();
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        } catch (\Exception $exception) {
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') > 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal menyunting data"
+            ]);
+        }
+    }
+
+    public function permissionsDelete(Request $request)
+    {
+        try {
+            $permissions = Permission::find($request->input('id'));
+            $permissions->delete();
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        } catch (\Exception $exception) {
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') > 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal menghapus data"
+            ]);
+        }
+    }
+
+    public function assignIndex(){
+        $roles = Role::all();
+        $permissions = Permission::with(['roles' => function($q){
+            $q->where('id','=',session('rolesID'));
+        }])->get();
+        return view('kitchen::assign', compact('roles','permissions'));
+    }
+
+    public function assignSetRoles(Request $request){
+        session([
+            'rolesID' => $request->input('id')
+        ]);
+        return redirect()->back();
+    }
+
+    public function assignSetPermissions(Request $request){
+       try{
+           dd($request->all());
+       }catch (\Exception $exception){
+
+       }
+    }
+
+
 }
