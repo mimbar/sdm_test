@@ -2,54 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Config/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Config/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Console/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Database/Migrations/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Database/Seeders/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Database/Seeders/DatatablesDatabaseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Database/factories/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Entities/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/DatatablesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Middleware/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Requests/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Providers/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Providers/DatatablesServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Resources/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Resources/assets/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Resources/assets/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Resources/lang/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Resources/views/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Resources/views/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Resources/views/layouts/master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Tests/Feature/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/Tests/Unit/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/module.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Datatables/webpack.mix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/assign.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/permissions.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/roles.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Auth/Database/Migrations/2019_08_02_105413_update_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/fresh.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Auth/Entities/Permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Entities/Permission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Auth/Entities/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Entities/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Auth/Entities/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Entities/Users.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Auth/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Home/Resources/views/home/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Home/Resources/views/home/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Auth/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Http/Controllers/KitchenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Http/Controllers/KitchenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/assign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/assign.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Hades.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Hades.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/laratrust_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/laratrust_seeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/LaratrustSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/LaratrustSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/sintesys_sdm.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/sintesys_sdm.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +133,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Modules/Kitchen/Resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -180,13 +146,13 @@
     <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/layouts" />
+      <recent name="$PROJECT_DIR$/Modules/Kitchen/Resources/views" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Modules/Auth/Entities" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Modules/Kitchen/Resources/views" />
-      <recent name="$PROJECT_DIR$/resources/views/layouts" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -223,7 +189,8 @@
       <workItem from="1564451437294" duration="11915000" />
       <workItem from="1564536162214" duration="10466000" />
       <workItem from="1564616603928" duration="2891000" />
-      <workItem from="1564631562025" duration="7162000" />
+      <workItem from="1564631562025" duration="7300000" />
+      <workItem from="1564724758777" duration="11798000" />
     </task>
     <servers />
   </component>

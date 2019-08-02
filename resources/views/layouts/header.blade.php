@@ -30,7 +30,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="" class="dropdown-item"><i class="icon-user-plus"></i> Profil</a>
                     <div class="dropdown-divider"></div>
-                    <a href="" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+                    <a href="{{ route('auth.logout') }}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
                 </div>
             </li>
         </ul>

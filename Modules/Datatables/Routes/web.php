@@ -16,6 +16,15 @@ Route::group([
     'as' => 'dt.',
     'middleware' => 'hades'
 ], function () {
+
+    Route::group([
+        'prefix' => 'users',
+        'as' => 'users.',
+    ], function () {
+        Route::post('all', 'KitchenController@allUsers')->name('all');
+    });
+
+
     Route::group([
         'prefix' => 'roles',
         'as' => 'roles.',

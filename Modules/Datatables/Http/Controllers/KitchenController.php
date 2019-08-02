@@ -7,9 +7,14 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Auth\Entities\Permission;
 use Modules\Auth\Entities\Role;
+use Modules\Users\Entities\User;
 
 class KitchenController extends Controller
 {
+    public function allUsers(){
+        $users = User::with('level')->get();
+        return datatables()->of($users)->toJson();
+    }
 
     public function allRoles()
     {

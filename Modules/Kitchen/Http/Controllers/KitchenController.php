@@ -5,27 +5,156 @@ namespace Modules\Kitchen\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 use Modules\Auth\Entities\Permission;
 use Modules\Auth\Entities\Role;
+use Modules\Users\Entities\User;
 
 class KitchenController extends Controller
 {
 
     public function usersIndex()
     {
-        return view('kitchen::users');
+        $roles = Role::all();
+        return view('kitchen::users', compact('roles'));
     }
 
-    public function usersCreate()
+    public function usersCreate(Request $request)
     {
+        try {
+            DB::beginTransaction();
+            $request->validate([
+                'name' => 'required',
+                'username' => 'required|unique:users,username',
+                'email' => 'required|email|unique:users,email',
+            ]);
+
+            $user = new User([
+                'name' => $request->input('name'),
+                'username' => $request->input('username'),
+                'email' => $request->input('email'),
+                'password' => Hash::make('siliwangi'),
+            ]);
+            $user->save();
+            $user->syncRoles([$request->input('rolesID')]);
+            DB::commit();
+            return \response()->json([
+                'code' => 200
+            ]);
+        } catch (ValidationException $exception){
+            $arrError = $exception->errors();
+            $arrImplode = [];
+            foreach ($arrError as $key=>$value ) {
+                $arrImplode[] = implode( ', ', $value );
+            }
+            $report = '<br><ul>';
+            foreach ($arrImplode as $data){
+                $report .= "<li>$data</li>";
+            }
+            $report .= '</ul>';
+
+            DB::rollBack();
+            return \response()->json([
+                'code' => 500,
+                'message' => $report
+            ]);
+        } catch (\Exception $exception) {
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
+            ]);
+        }
+
     }
 
-    public function usersUpdate()
+    public function usersUpdate(Request $request)
     {
+        try {
+            DB::beginTransaction();
+            $request->validate([
+                'name' => 'required'
+            ]);
+
+            $user = User::find($request->input('id'));
+            $user->name = $request->input('name');
+            $user->active = $request->input('active');
+            $user->save();
+            $user->syncRoles([$request->input('rolesID')]);
+            DB::commit();
+            return \response()->json([
+                'code' => 200
+            ]);
+        } catch (ValidationException $exception){
+            $arrError = $exception->errors();
+            $arrImplode = [];
+            foreach ($arrError as $key=>$value ) {
+                $arrImplode[] = implode( ', ', $value );
+            }
+            $report = '<br><ul>';
+            foreach ($arrImplode as $data){
+                $report .= "<li>$data</li>";
+            }
+            $report .= '</ul>';
+
+            DB::rollBack();
+            return \response()->json([
+                'code' => 500,
+                'message' => $report
+            ]);
+        } catch (\Exception $exception) {
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
+            ]);
+        }
     }
 
-    public function usersDelete()
-    {
+    public function usersCheckUsername(Request $request){
+        try{
+            $user = User::where('username','=',$request->post('username'));
+            if ($user->exists())
+                $return = 409;
+            else
+                $return = 200;
+
+            return response()->json($return);
+        }catch (\Exception $exception){
+            return response()->json($exception->getMessage());
+        }
+    }
+
+    public function usersCheckEmail(Request $request){
+        try{
+            $user = User::where('email','=',$request->post('email'));
+            if ($user->exists())
+                $return = 409;
+            else
+                $return = 200;
+
+            return response()->json($return);
+        }catch (\Exception $exception){
+            return response()->json($exception->getMessage());
+        }
+    }
+
+    public function usersReset(Request $request){
+        try{
+            $user = User::find($request->input('id'));
+            $user->password = Hash::make('siliwangi');
+            $user->clean = 0;
+            $user->save();
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        }catch (\Exception $exception){
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
+            ]);
+        }
     }
 
     public function rolesIndex()
@@ -176,9 +305,16 @@ class KitchenController extends Controller
 
     public function assignSetPermissions(Request $request){
        try{
-           dd($request->all());
+           $roles = Role::find(session('rolesID'));
+           $roles->syncPermissions($request->input('id') ?? []);
+           return \response()->json([
+               'code' => 200
+           ]);
        }catch (\Exception $exception){
-
+           return \response()->json([
+               'code' => 500,
+               'message' => getenv('APP_ENV') > 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal menyunting data"
+           ]);
        }
     }
 

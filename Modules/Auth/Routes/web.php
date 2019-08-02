@@ -21,6 +21,7 @@ Route::group([
         return redirect()->route('auth.login');
     });
     Route::get('login', 'AuthController@login')->name('view');
+    Route::get('fresh', 'AuthController@fresh')->name('fresh');
     Route::post('login', 'AuthController@loginPost')->name('login');
     Route::get('logout', 'AuthController@logout')->name('logout');
 

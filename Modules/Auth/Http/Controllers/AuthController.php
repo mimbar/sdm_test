@@ -22,6 +22,11 @@ class AuthController extends Controller
         }
     }
 
+    public function fresh(){
+        $user = Auth::user();
+        return view('layouts.fresh', compact('user'));
+    }
+
     public function loginPost(Request $request)
     {
         try {
@@ -35,7 +40,10 @@ class AuthController extends Controller
             }
 
             if (Auth::check()) {
-                return redirect()->route('home.index');
+                if (Auth::user()->clean == 0)
+                    return redirect()->route('auth.fresh');
+                else
+                    return redirect()->route('home.index');
             }
 
             return redirect()->route('auth.view')->with('loginStatus', [

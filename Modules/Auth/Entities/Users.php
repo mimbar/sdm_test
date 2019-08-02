@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
+use Modules\Auth\Entities\Role;
 
 
 class User extends Authenticatable
@@ -15,12 +16,15 @@ class User extends Authenticatable
     protected $guard_name = 'web';
 
     protected $fillable = [
-        'username', 'email', 'sex',
-        'first_degree', 'name', 'degree', 'level'
+        'username', 'email', 'password', 'name',
     ];
 
     protected $hidden = [
         'password',
     ];
+
+    public function level(){
+        return $this->belongsToMany(Role::class);
+    }
 
 }

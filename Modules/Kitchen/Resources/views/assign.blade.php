@@ -67,9 +67,28 @@
             $.ajax({
                 url: '{{ route('kitchen.assign.setpermissions') }}',
                 type: "POST",
-                data: val,
+                data: {
+                    id: val
+                },
                 success: function (response) {
-
+                    if (response.code === 200) {
+                        new Noty({
+                            theme: ' alert bg-success text-white alert-styled-left p-0',
+                            text: 'Data Berhasil disimpan.',
+                            type: 'success',
+                            progressBar: true,
+                        }).show();
+                        dtpermissions.ajax.reload();
+                    } else if (response.code === 500) {
+                        new Noty({
+                            theme: ' alert bg-danger text-white alert-styled-left p-0',
+                            text: 'Data Gagal disimpan.',
+                            type: 'danger',
+                            progressBar: true,
+                        }).show();
+                    } else {
+                        alert('Hubungi Admin!');
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);
