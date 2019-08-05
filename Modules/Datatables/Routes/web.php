@@ -38,4 +38,12 @@ Route::group([
     ], function () {
         Route::post('all', 'KitchenController@allPermissions')->name('all');
     });
+
+
+    Route::group([
+        'prefix' => 'unitkerja',
+        'as' => 'unitkerja.',
+    ], function () {
+        Route::post('all', 'KitchenController@allUnitKerja')->name('all');
+    });
 });

@@ -2,48 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Config/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Config/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Console/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015544_create_unit_kerja_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015621_create_status_pegawai_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015734_create_golongan_ruang_pangkat_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015804_create_status_kawin_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015824_create_gaji_pokok_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015906_create_pegawai_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_031654_create_jabatan_fungsional_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_032049_create_jabatan_struktural_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_033415_create_bank_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_065940_create_tunjangan_struktural_tables.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Seeders/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/Seeders/MasterDatabaseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Database/factories/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Http/Controllers/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Http/Controllers/MasterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Http/Middleware/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Http/Requests/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Providers/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Providers/MasterServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/assets/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/assets/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/lang/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/views/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/views/layouts/master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/views/unitkerja.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Tests/Feature/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Tests/Unit/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/module.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Master/webpack.mix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/CompositeKey.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/UnitKerja.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Master/Resources/views/layouts/master.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Master/Resources/views/unitkerja.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Resources/views/unitkerja.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -223,6 +188,7 @@
       <workItem from="1564724758777" duration="11798000" />
       <workItem from="1564800507786" duration="8341000" />
       <workItem from="1564966076137" duration="7534000" />
+      <workItem from="1565003384407" duration="2660000" />
     </task>
     <servers />
   </component>

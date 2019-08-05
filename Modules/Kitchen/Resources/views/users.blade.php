@@ -170,7 +170,11 @@
             checkEmail.removeClass('border-danger');
             checkEmail.addClass('border-success');
             statusEmail.addClass('d-none');
-            $(this).find('.statusid').val(1);
+            $(this).find(':input').val('');
+            $(this).find('.active').val(1);
+            $(this).find('.rolesid').val(2);
+            $(this).find('input[name="username"]').removeAttr('disabled');
+            $(this).find('input[name="email"]').removeAttr('disabled');
         });
 
         $('.save').on('click', function (e) {
