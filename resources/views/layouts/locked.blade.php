@@ -56,26 +56,12 @@
                         <div class="text-center mb-3">
                             <div class=""><img style="width:90px; height: auto; padding-bottom: 9px" src="../../assets/batagor/global_assets/images/logo_unsil.png"/></div>
                             <h5 class="content-group">Selamat datang, {{ $user->name }}<br>
-                                <small class="d-block text-muted">Untuk kemanan akun anda, silakan menggunakan password baru selain password default.</small>
+                                <small class="d-block text-muted">Akun anda disuspend. Sila hubungi admin untuk diaktifkan.</small>
                             </h5>
                         </div>
 
-                        <div class="form-group form-group-feedback form-group-feedback-left">
-                            <input type="password" class="form-control" name="password1" placeholder="Password">
-                            <div class="form-control-feedback">
-                                <i class="icon-lock2 text-muted"></i>
-                            </div>
-                        </div>
-
-                        <div class="form-group form-group-feedback form-group-feedback-left">
-                            <input type="password" class="form-control" name="password2" placeholder="Password">
-                            <div class="form-control-feedback">
-                                <i class="icon-lock2 text-muted"></i>
-                            </div>
-                        </div>
-
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block">Simpan <i class="icon-circle-right2 ml-2"></i></button>
+                            <a class="btn btn-success btn-block" href="{{ route('auth.logout') }}">Keluar <i class="icon-exit2 ml-2"></i></a>
                         </div>
                         {{ csrf_field() }}
                     </div>

@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Auth\Entities\Permission;
 use Modules\Auth\Entities\Role;
-use Modules\Users\Entities\User;
+use Modules\Auth\Entities\User;
 
 class KitchenController extends Controller
 {

@@ -1,12 +1,11 @@
 <?php
 
-namespace Modules\Users\Entities;
+namespace Modules\Auth\Entities;
 
 use Illuminate\Notifications\Notifiable;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
-use Modules\Auth\Entities\Role;
 
 
 class User extends Authenticatable
@@ -16,7 +15,7 @@ class User extends Authenticatable
     protected $guard_name = 'web';
 
     protected $fillable = [
-        'username', 'email', 'password', 'name',
+        'username', 'email', 'password', 'name', 'clean', 'active'
     ];
 
     protected $hidden = [

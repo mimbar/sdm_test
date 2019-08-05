@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Modules/Auth/Database/Migrations/2019_08_02_105413_update_users_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/fresh.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/locked.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Auth/Entities/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Entities/Users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Auth/Entities/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Entities/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Auth/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Http/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Auth/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Http/Controllers/KitchenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Http/Controllers/KitchenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/assign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/assign.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/sintesys_sdm.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/sintesys_sdm.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Hades.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Hades.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/laratrust.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/laratrust.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/LaratrustSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/LaratrustSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/fresh.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fresh.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/menu/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/menu/items.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -146,13 +147,14 @@
     <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/layouts" />
-      <recent name="$PROJECT_DIR$/Modules/Kitchen/Resources/views" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Modules/Auth/Entities" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/layouts" />
+      <recent name="$PROJECT_DIR$/Modules/Auth/Entities" />
+      <recent name="$PROJECT_DIR$/Modules/Kitchen/Resources/views" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -191,6 +193,8 @@
       <workItem from="1564616603928" duration="2891000" />
       <workItem from="1564631562025" duration="7300000" />
       <workItem from="1564724758777" duration="11798000" />
+      <workItem from="1564800507786" duration="8341000" />
+      <workItem from="1564966076137" duration="121000" />
     </task>
     <servers />
   </component>

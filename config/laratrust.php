@@ -104,7 +104,7 @@ return [
     |
     */
     'user_models' => [
-        'users' => 'App\User',
+        'users' => 'Modules\Auth\Entities\User',
     ],
 
     /*
@@ -248,7 +248,7 @@ return [
                 'url' => '/home',
                 'message' => [
                     'key' => 'error',
-                    'content' => ''
+                    'content' => 'Anda Tidak diizinkan masuk kedalam menu tersebut'
                 ]
             ]
         ]

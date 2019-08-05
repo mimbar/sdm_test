@@ -22,26 +22,12 @@ Route::group([
     });
     Route::get('login', 'AuthController@login')->name('view');
     Route::get('fresh', 'AuthController@fresh')->name('fresh');
+    Route::get('locked', 'AuthController@locked')->name('locked');
+    Route::post('fresh', 'AuthController@freshSetPassword')->name('freshset');
     Route::post('login', 'AuthController@loginPost')->name('login');
     Route::get('logout', 'AuthController@logout')->name('logout');
 
     Route::get('adduser', function(){
-
-    });
-
-    Route::group([
-        'prefix' => 'manager',
-        'as' => 'manager.',
-        'middleware' => 'login'
-    ], function() {
-        Route::get('/', 'AuthController@permission')->name('permission.read');
-        Route::post('/permission', 'AuthController@storePermission')->name('permission.create');
-        Route::patch('/permission', 'AuthController@updatePermission')->name('permission.update');
-
-        Route::post('/roles', 'AuthController@storeRole')->name('role.create');
-        Route::patch('/roles', 'AuthController@updateRole')->name('role.update');
-        Route::post('/roles/assign', 'AuthController@assignRoleToPermission')->name('role.assign');
-
 
     });
 });

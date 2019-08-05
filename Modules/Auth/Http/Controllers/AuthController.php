@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Modules\Auth\Entities\Permission;
 use Modules\Auth\Entities\Role;
@@ -15,16 +16,71 @@ class AuthController extends Controller
 {
     public function login()
     {
-        if (Auth::user()){
+        if (Auth::user()) {
             return redirect()->route('home.index');
-        }else{
+        } else {
             return view('layouts.login');
         }
     }
 
-    public function fresh(){
-        $user = Auth::user();
-        return view('layouts.fresh', compact('user'));
+    public function fresh()
+    {
+        if (Auth::user()) {
+            $user = Auth::user();
+            return view('layouts.fresh', compact('user'));
+        } else {
+            return redirect()->route('auth.login');
+        }
+    }
+
+    public function locked()
+    {
+        if (Auth::user()) {
+            $user = Auth::user();
+            return view('layouts.locked', compact('user'));
+        } else {
+            return redirect()->route('auth.login');
+        }
+    }
+
+    public function freshSetPassword(Request $request)
+    {
+        try {
+            if (strlen($request->input('password1')) <= 5 or strlen($request->input('password2')) <= 5) {
+                $redirect = redirect()->back()->with('updateStatus', [
+                    'code' => 500,
+                    'message' => "Password harus lebih dari 5 karakter"
+                ]);
+            } elseif ($request->input('password1') != $request->input('password2')) {
+                $redirect = redirect()->back()->with('updateStatus', [
+                    'code' => 500,
+                    'message' => "Password tidak sama"
+                ]);
+            } elseif ($request->input('password1') == 'siliwangi' or $request->input('password2') == 'siliwangi') {
+                $redirect = redirect()->back()->with('updateStatus', [
+                    'code' => 500,
+                    'message' => "Password tidak diizinkan menggunakan password <i>default</i>"
+                ]);
+            } elseif ($request->input('password1') == $request->input('password2')) {
+                $user = Auth::user();
+                $user->password = Hash::make($request->input('password1'));
+                $user->clean = 1;
+                $user->save();
+
+                $redirect = redirect()->route('home.index');
+            } else {
+                $redirect = redirect()->back()->with('updateStatus', [
+                    'code' => 500,
+                    'message' => "Password tidak sama dan jangan gunakan password default <i>siliwangi</i>"
+                ]);
+            }
+            return $redirect;
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('updateStatus', [
+                'code' => 500,
+                'message' => env('ENVIRONMENT') === 'local' ? $exception->getMessage() : "Terjadi Kesalahan"
+            ]);
+        }
     }
 
     public function loginPost(Request $request)
@@ -40,7 +96,9 @@ class AuthController extends Controller
             }
 
             if (Auth::check()) {
-                if (Auth::user()->clean == 0)
+                if (Auth::user()->active == 0)
+                    return redirect()->route('auth.locked');
+                elseif (Auth::user()->clean == 0)
                     return redirect()->route('auth.fresh');
                 else
                     return redirect()->route('home.index');
@@ -52,12 +110,12 @@ class AuthController extends Controller
 
         } catch (\Exception $exception) {
             if (env('ENVIRONMENT') === 'dev')
-                $return = redirect()->route('users.index')->with('loginStatus', [
+                $return = redirect()->back()->with('loginStatus', [
                     'code' => 500,
                     'message' => $exception->getMessage()
                 ]);
             else
-                $return = redirect()->route('users.index')->with('loginStatus', [
+                $return = redirect()->back()->with('loginStatus', [
                     'code' => 500,
                     'message' => "Terjadi Kesalahan"
                 ]);
@@ -75,23 +133,6 @@ class AuthController extends Controller
             return $exception;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public function permission()
@@ -121,13 +162,13 @@ class AuthController extends Controller
             ]);
 
             return $return;
-        } catch (ValidationException $exception){
+        } catch (ValidationException $exception) {
             $arrError = $exception->errors();
-            foreach ($arrError as $key=>$value ) {
-                $arrImplode[] = implode( ', ', $value );
+            foreach ($arrError as $key => $value) {
+                $arrImplode[] = implode(', ', $value);
             }
             $report = '<br><ul>';
-            foreach ($arrImplode as $data){
+            foreach ($arrImplode as $data) {
                 $report .= "<li>$data</li>";
             }
             $report .= '</ul>';
@@ -180,13 +221,13 @@ class AuthController extends Controller
             ]);
 
             return $return;
-        } catch (ValidationException $exception){
+        } catch (ValidationException $exception) {
             $arrError = $exception->errors();
-            foreach ($arrError as $key=>$value ) {
-                $arrImplode[] = implode( ', ', $value );
+            foreach ($arrError as $key => $value) {
+                $arrImplode[] = implode(', ', $value);
             }
             $report = '<br><ul>';
-            foreach ($arrImplode as $data){
+            foreach ($arrImplode as $data) {
                 $report .= "<li>$data</li>";
             }
             $report .= '</ul>';
@@ -239,13 +280,13 @@ class AuthController extends Controller
             ]);
 
             return $return;
-        } catch (ValidationException $exception){
+        } catch (ValidationException $exception) {
             $arrError = $exception->errors();
-            foreach ($arrError as $key=>$value ) {
-                $arrImplode[] = implode( ', ', $value );
+            foreach ($arrError as $key => $value) {
+                $arrImplode[] = implode(', ', $value);
             }
             $report = '<br><ul>';
-            foreach ($arrImplode as $data){
+            foreach ($arrImplode as $data) {
                 $report .= "<li>$data</li>";
             }
             $report .= '</ul>';
@@ -298,13 +339,13 @@ class AuthController extends Controller
             ]);
 
             return $return;
-        } catch (ValidationException $exception){
+        } catch (ValidationException $exception) {
             $arrError = $exception->errors();
-            foreach ($arrError as $key=>$value ) {
-                $arrImplode[] = implode( ', ', $value );
+            foreach ($arrError as $key => $value) {
+                $arrImplode[] = implode(', ', $value);
             }
             $report = '<br><ul>';
-            foreach ($arrImplode as $data){
+            foreach ($arrImplode as $data) {
                 $report .= "<li>$data</li>";
             }
             $report .= '</ul>';
@@ -337,15 +378,16 @@ class AuthController extends Controller
         }
     }
 
-    public function assignRoleToPermission(Request $request){
-        try{
+    public function assignRoleToPermission(Request $request)
+    {
+        try {
             $role = Role::find($request->input('id'));
             $role->syncPermissions($request->input('permission'));
             $return = [
                 'code' => 200
             ];
             return response()->json($return);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             if (env('ENVIRONMENT') === 'dev')
                 $return = [
                     'code' => 500,

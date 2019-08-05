@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Modules\Auth\Entities\Permission;
 use Modules\Auth\Entities\Role;
-use Modules\Users\Entities\User;
+use Modules\Auth\Entities\User;
 
 class KitchenController extends Controller
 {
@@ -36,6 +36,8 @@ class KitchenController extends Controller
                 'username' => $request->input('username'),
                 'email' => $request->input('email'),
                 'password' => Hash::make('siliwangi'),
+                'clean' => 0,
+                'active' =>  $request->input('active'),
             ]);
             $user->save();
             $user->syncRoles([$request->input('rolesID')]);

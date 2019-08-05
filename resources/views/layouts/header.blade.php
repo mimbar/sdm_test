@@ -16,7 +16,7 @@
 
         <span class="badge bg-success-400 ml-3 mr-2">{{ Auth::user()->username }}</span>
         @foreach(\Illuminate\Support\Facades\Auth::user()->roles as $data)
-            <span class="badge bg-violet-400 mr-md-auto" data-popup="tooltip" title="{{ session('prodi') }}" data-placement="bottom">{{ $data->name }}</span>
+            <span class="badge bg-violet-400 mr-md-auto" data-placement="bottom">{{ $data->name }}</span>
         @endforeach
 
         <ul class="navbar-nav">
