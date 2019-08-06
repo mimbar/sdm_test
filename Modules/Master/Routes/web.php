@@ -26,31 +26,20 @@ Route::group([
     });
 
     Route::group([
-        'prefix' => 'roles',
-        'as' => 'roles.',
+        'prefix' => 'grp',
+        'as' => 'grp.',
     ], function () {
-        Route::get('/', 'KitchenController@rolesIndex')->name('read')->middleware('permission:roles.*');
-        Route::post('/', 'KitchenController@rolesCreate')->name('create')->middleware('permission:roles.create');
-        Route::patch('/', 'KitchenController@rolesUpdate')->name('update')->middleware('permission:roles.update');
-        Route::delete('/', 'KitchenController@rolesDelete')->name('delete')->middleware('permission:roles.delete');
+        Route::get('/', 'MasterController@grpIndex')->name('read');
+        Route::post('/', 'MasterController@grpCreate')->name('create');
+        Route::patch('/', 'MasterController@grpUpdate')->name('update');
     });
 
     Route::group([
-        'prefix' => 'permissions',
-        'as' => 'permissions.',
+        'prefix' => 'statuspegawai',
+        'as' => 'statuspegawai.',
     ], function () {
-        Route::get('/', 'KitchenController@permissionsIndex')->name('read')->middleware('permission:permissions.*');
-        Route::post('/', 'KitchenController@permissionsCreate')->name('create')->middleware('permission:permissions.create');
-        Route::patch('/', 'KitchenController@permissionsUpdate')->name('update')->middleware('permission:permissions.update');
-        Route::delete('/', 'KitchenController@permissionsDelete')->name('delete')->middleware('permission:permissions.delete');
-    });
-
-    Route::group([
-        'prefix' => 'assign',
-        'as' => 'assign.',
-    ], function () {
-        Route::get('/', 'KitchenController@assignIndex')->name('read')->middleware('permission:assign.update');
-        Route::post('setroles', 'KitchenController@assignSetRoles')->name('setroles')->middleware('permission:assign.update');
-        Route::post('setpermissions', 'KitchenController@assignSetPermissions')->name('setpermissions')->middleware('permission:assign.update');
+        Route::get('/', 'MasterController@statuspegawaiIndex')->name('read');
+        Route::post('/', 'MasterController@statuspegawaiCreate')->name('create');
+        Route::patch('/', 'MasterController@statuspegawaiUpdate')->name('update');
     });
 });

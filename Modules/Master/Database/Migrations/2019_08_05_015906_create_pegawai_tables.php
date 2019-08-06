@@ -21,11 +21,13 @@ class CreatePegawaiTables extends Migration
             $table->string('gelar_depan')->nullable();
             $table->string('nama');
             $table->string('gelar_belakang')->nullable();
+            $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->string('alamat');
+            $table->string('alamat')->nullable();
             $table->integer('unitID')->default(1);
             $table->tinyInteger('status_kawin')->default(1);
             $table->tinyInteger('jumlah_tanggungan')->default(0);
+            $table->tinyInteger('status_pegawai')->default(1);
             $table->date('tanggal_masuk');
             $table->integer('masa_kerja')->default(0);
             $table->char('golonganID',3)->default('I');
@@ -35,6 +37,7 @@ class CreatePegawaiTables extends Migration
             $table->integer('bankID')->default(1);
             $table->integer('nomor_rekening')->default(0);
             $table->string('npwp')->nullable();
+            $table->tinyInteger('aktif')->default(1);
             $table->nullableTimestamps();
         });
     }

@@ -81,10 +81,10 @@
                 id = modal.find('input[name="id"]').val(),
                 values = $(':input').serialize(), url, method;
             if ($.isNumeric(id)) {
-                url = '{{ route("kitchen.users.update") }}';
+                url = '{{ route("master.unitkerja.update") }}';
                 method = 'PATCH';
             } else {
-                url = '{{ route("kitchen.users.create") }}';
+                url = '{{ route("master.unitkerja.create") }}';
                 method = 'POST';
             }
 

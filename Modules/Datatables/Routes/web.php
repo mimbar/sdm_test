@@ -39,11 +39,31 @@ Route::group([
         Route::post('all', 'KitchenController@allPermissions')->name('all');
     });
 
-
     Route::group([
         'prefix' => 'unitkerja',
         'as' => 'unitkerja.',
     ], function () {
         Route::post('all', 'KitchenController@allUnitKerja')->name('all');
+    });
+
+    Route::group([
+        'prefix' => 'grp',
+        'as' => 'grp.',
+    ], function () {
+        Route::post('all', 'KitchenController@allGrp')->name('all');
+    });
+
+    Route::group([
+        'prefix' => 'statuspegawai',
+        'as' => 'statuspegawai.',
+    ], function () {
+        Route::post('all', 'KitchenController@allStatusPegawai')->name('all');
+    });
+
+    Route::group([
+        'prefix' => 'pegawai',
+        'as' => 'pegawai.',
+    ], function () {
+        Route::post('all', 'KitchenController@allPegawai')->name('all');
     });
 });

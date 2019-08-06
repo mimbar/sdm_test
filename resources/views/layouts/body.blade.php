@@ -31,6 +31,7 @@
 
     <!-- Theme JS files -->
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/notifications/sweet_alert.min.js') }}"></script>
+    <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/inputs/inputmask.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/styling/switchery.min.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
@@ -102,7 +103,7 @@
         singleDatePicker: true,
         showDropdowns: true,
         "locale": {
-            "format": "YYYY-MM-DD",
+            "format": "DD-MM-YYYY",
         }
     });
 

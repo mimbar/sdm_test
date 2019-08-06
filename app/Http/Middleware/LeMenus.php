@@ -21,13 +21,14 @@ class LeMenus
             foreach($menulist as $head){
                 $nickname = preg_replace('/\s+/', '', $head->nama);
                 $icon = '<i class="'.$head->icon.' mr-2"></i>';
-                if ($head->child()->count() == 0){
+                if ($head->url == '#'){
+                    $route = "#";
+                }else{
                     $route = [
                         'route' => $head->url
                     ];
-                }else{
-                    $route = "#";
                 }
+
                 $menu->add("$icon $head->nama", $route)
                     ->nickname("$nickname");
                 $route = null;

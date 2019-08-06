@@ -16,9 +16,9 @@ class CreateGolonganRuangPangkatTables extends Migration
         Schema::create('golongan_ruang_pangkat', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('golongan',3);
-            $table->char('ruang');
+            $table->char('ruang',1);
             $table->string('pangkat');
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

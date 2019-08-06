@@ -2,7 +2,7 @@
     @php($hasChild = $item->hasChildren())
     <li class="nav-item @if($hasChild) dropdown @endif">
         <a class="navbar-nav-link @if($hasChild) dropdown-toggle @endif" @if($hasChild) data-toggle="dropdown"
-           @endif href="@if($hasChild) {!! $item->url() !!} @else # @endif"  >{!! $item->title !!} </a>
+           @endif href="@if($item->url() =='#') # @else {!! $item->url() !!} @endif"  >{!! $item->title !!} </a>
         @if($hasChild)
             <div class="dropdown-menu">
                 @foreach($item->children() as $children)

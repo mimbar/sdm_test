@@ -4,10 +4,10 @@ namespace Modules\Master\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UnitKerja extends Model
+class StatusPegawai extends Model
 {
-    public $table = 'unit_kerja';
+    protected $table = 'status_pegawai';
     protected $fillable = [
-        'singkatan','nama'
+        'nama','description'
     ];
 }

@@ -2,13 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/UnitKerja.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/Bank.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/Fungsional.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/GRP.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/Pegawai.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/StatusKawin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/StatusPegawai.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Entities/Struktural.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/views/grp.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Master/Resources/views/statuspegawai.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Config/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Config/config.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Console/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Database/Migrations/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Database/Seeders/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Database/Seeders/PegawaiDatabaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Database/factories/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Entities/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Http/Middleware/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Http/Requests/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Providers/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Providers/PegawaiServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/assets/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/assets/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/lang/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/layouts/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Routes/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Tests/Feature/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/Tests/Unit/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Pegawai/webpack.mix.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Master/Resources/views/layouts/master.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015734_create_golongan_ruang_pangkat_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015734_create_golongan_ruang_pangkat_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015906_create_pegawai_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015906_create_pegawai_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Master/Entities/UnitKerja.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Entities/UnitKerja.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Master/Http/Controllers/MasterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Http/Controllers/MasterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Master/Resources/views/unitkerja.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Resources/views/unitkerja.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Master/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/LeMenus.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/LeMenus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/menu/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/menu/items.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +172,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Modules/Master/Resources/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -139,15 +185,16 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Modules/Master/Resources/views" />
+      <recent name="$PROJECT_DIR$/Modules/Auth/Entities" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Modules/Master/Resources/views" />
       <recent name="$PROJECT_DIR$/resources/views/layouts" />
       <recent name="$PROJECT_DIR$/Modules/Auth/Entities" />
       <recent name="$PROJECT_DIR$/Modules/Kitchen/Resources/views" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Modules/Master/Resources/views" />
-      <recent name="$PROJECT_DIR$/Modules/Auth/Entities" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -189,6 +236,9 @@
       <workItem from="1564800507786" duration="8341000" />
       <workItem from="1564966076137" duration="7534000" />
       <workItem from="1565003384407" duration="2660000" />
+      <workItem from="1565057911896" duration="972000" />
+      <workItem from="1565060524386" duration="6009000" />
+      <workItem from="1565073215069" duration="7708000" />
     </task>
     <servers />
   </component>
