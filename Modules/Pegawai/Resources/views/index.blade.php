@@ -6,10 +6,17 @@
             <div class="card-header header-elements-inline">
                 <h5 class="card-title">Pegawai</h5>
                 <div class="header-elements">
-                    <button class="btn bg-success" data-toggle="modal" data-target="#mUser">
-                        <i class="icon-add"></i>
-                        Tambah
-                    </button>
+                    <div class="btn-group">
+                        <button class="btn bg-warning kalkulasi">
+                            <i class="icon-reset"></i>
+                            Kalkulasi Masa Kerja
+                        </button>
+
+                        <button class="btn bg-success" data-toggle="modal" data-target="#mUser">
+                            <i class="icon-add"></i>
+                            Tambah
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -60,6 +67,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label>Gelar Depan</label>
+                                        <input type="hidden" name="id">
                                         <input type="text" placeholder="Gelar Depan" name="gelar_depan"
                                                class="form-control">
                                     </div>
@@ -96,8 +104,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Status Kawin</label>
-                                        <select name="status_kawin" class="form-control">
-                                            <option selected disabled>== Pilih ==</option>
+                                        <select name="status_kawin" class="form-control status_kawin">
                                             @foreach($statusKawin as $status)
                                                 <option value="{{ $status->id }}">{{ $status->nama }}</option>
                                             @endforeach
@@ -119,7 +126,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Bank</label>
-                                        <select name="bankID" class="form-control">
+                                        <select name="bankID" class="form-control bankID">
                                             @foreach($banks as $bank)
                                                 <option value="{{ $bank->id }}">{{ $bank->name }}</option>
                                             @endforeach
@@ -155,7 +162,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Status Kepegawaian</label>
-                                        <select name="status_pegawai" class="form-control">
+                                        <select name="status_pegawai" class="form-control status_pegawai">
                                             @foreach($statusPegawai as $status)
                                                 <option value="{{ $status->id }}">{{ $status->nama }}</option>
                                             @endforeach
@@ -164,7 +171,7 @@
 
                                     <div class="col-sm-6">
                                         <label>Unit</label>
-                                        <select name="unitID" class="form-control">
+                                        <select name="unitID" class="form-control unitID">
                                             @foreach($unitkerja as $unit)
                                                 <option value="{{ $unit->id }}">{{ $unit->nama }}</option>
                                             @endforeach
@@ -209,8 +216,8 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Struktural</label>
-                                        <select name="strukturalID" class="form-control">
-                                            <option>Tidak ada</option>
+                                        <select name="strukturalID" class="form-control strukturalID">
+                                            <option selected value>Tidak ada</option>
                                             @foreach($jabatanStruktural as $struktural)
                                                 <option value="{{ $struktural->id }}">{{ $struktural->nama }}</option>
                                             @endforeach
@@ -219,8 +226,8 @@
 
                                     <div class="col-sm-6">
                                         <label>Fungsional</label>
-                                        <select name="fungstionalID" class="form-control">
-                                            <option>Tidak ada</option>
+                                        <select name="fungsionalID" class="form-control fungsionalID">
+                                            <option selected value>Tidak ada</option>
                                             @foreach($jabatanFungsional as $fungsional)
                                                 <option value="{{ $fungsional->id }}">{{ $fungsional->nama }}</option>
                                             @endforeach
@@ -233,7 +240,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Aktif</label>
-                                        <select name="aktif" class="form-control">
+                                        <select name="aktif" class="form-control aktif">
                                             <option value="1">Aktif</option>
                                             <option value="0">Tidak Aktif</option>
                                         </select>
@@ -263,20 +270,51 @@
             statusEmail = $('.statusEmail'),
             statusUsername = $('.statusUsername'), modal = $('#mUser');
 
+        $('.kalkulasi').on('click',function () {
+            new Noty({
+                theme: ' alert bg-success text-white alert-styled-left p-0',
+                text: 'Sedang Mengkalkulasi, mohon menunggu.',
+                type: 'success',
+                progressBar: true,
+            }).show();
+            $('.dtpegawai').LoadingOverlay("show", {
+                image: "",
+                fontawesome: "fa fa-cog fa-spin"
+            });
 
-        // modal.on('show.bs.modal', function () {
-        //     checkUsername.removeClass('border-danger');
-        //     checkUsername.addClass('border-success');
-        //     statusUsername.addClass('d-none');
-        //     checkEmail.removeClass('border-danger');
-        //     checkEmail.addClass('border-success');
-        //     statusEmail.addClass('d-none');
-        //     $(this).find(':input').val('');
-        //     $(this).find('.active').val(1);
-        //     $(this).find('.rolesid').val(2);
-        //     $(this).find('input[name="username"]').removeAttr('disabled');
-        //     $(this).find('input[name="email"]').removeAttr('disabled');
-        // });
+            $.ajax({
+                url: '{{ route('pegawai.pegawai.kalkulasi') }}',
+                type: 'PATCH',
+                success: function (response) {
+                    if (response.code === 200) {
+                        new Noty({
+                            theme: ' alert bg-success text-white alert-styled-left p-0',
+                            text: 'Data Berhasil disimpan.',
+                            type: 'success',
+                            progressBar: true,
+                        }).show();
+                        dtpegawai.ajax.reload();
+                    } else if (response.code === 500) {
+                        new Noty({
+                            theme: ' alert bg-danger text-white alert-styled-left p-0',
+                            text: 'Data Gagal disimpan. ' + response.message,
+                            type: 'danger',
+                            progressBar: true,
+                        }).show();
+                    } else {
+                        alert('Hubungi Admin!');
+                    }
+                    dtpegawai.ajax.reload();
+                    $('.dtpegawai').LoadingOverlay("hide");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+
+
+        });
+
 
         $('.save').on('click', function (e) {
             let modal = $('#mUser'),
@@ -325,7 +363,6 @@
 
         let dtpegawai = $('.dtpegawai').DataTable({
             "scrollX": true,
-            "searching": false,
             "ordering": false,
             scrollY: 350,
             scrollCollapse: true,
@@ -383,11 +420,18 @@
                 let active = '';
                 if (data.active === 0)
                     active = '<span class="badge badge-danger">Banned</span>';
+                $('td:eq(3)', row).html(data.gelar_depan+' '+data.nama+' '+data.gelar_belakang);
+                $('td:eq(4)', row).html(data.golonganID+''+data.ruangID);
+                $('td:eq(5)', row).html(data.masa_kerja+' Tahun');
 
-
-                $('td:eq(5)', row).html('<div class="btn-group">' +
+                $('td:eq(6)', row).html('<div class="btn-group">' +
                     '<button type="button" class="btn btn-sm btn-success editUsers"' +
-                    ' data-id="' + data.id + '" data-name="' + data.name + '"' + '" data-username="' + data.username + '"' + '" data-email="' + data.email + '"' +
+                    ' data-id="' + data.id + '" data-nik="' + data.nik + '"' + '" data-gender="' + data.gender + '"' + '" data-gelar_depan="' + data.gelar_depan + '"' +
+                    ' data-nama="' + data.nama + '" data-gelar_belakang="' + data.gelar_belakang + '"' + '" data-tempat_lahir="' + data.tempat_lahir + '"' + '" data-tanggal_lahir="' + data.tanggal_lahir + '"' +
+                    ' data-alamat="' + data.alamat + '" data-unitid="' + data.unitID + '"' + '" data-status_kawin="' + data.status_kawin + '"' + '" data-jumlah_tanggungan="' + data.jumlah_tanggungan + '"' +
+                    ' data-status_pegawai="' + data.status_pegawai + '" data-tanggal_masuk="' + data.tanggal_masuk + '"' + '" data-masa_kerja="' + data.masa_kerja + '"' + '" data-golonganid="' + data.golonganID + '"' +
+                    ' data-ruangid="' + data.ruangID + '" data-strukturalid="' + data.strukturalID + '"' + '" data-fungsionalid="' + data.fungsionalID + '"' + '" data-bankid="' + data.bankID + '"' +
+                    ' data-nomor_rekening="' + data.nomor_rekening + '" data-npwp="' + data.npwp + '"' + '" data-aktif="' + data.aktif + '"' +
                     ' >' +
                     '<i class="fa fa-edit"></i> Sunting' +
                     '</button>' +
@@ -398,70 +442,31 @@
                     let data = $(this).data();
                     modal.modal('toggle');
                     $(':input').val('');
+                    modal.find('input[name="strukturalID"]').val(null);
+                    modal.find('input[name="fungsionalID"]').val(null);
                     modal.find('input[name="id"]').val(data.id);
-                    modal.find('input[name="username"]').val(data.username).attr('disabled', 'disabled');
-                    modal.find('input[name="email"]').val(data.email).attr('disabled', 'disabled');
-                    modal.find('input[name="name"]').val(data.name);
-                    modal.find('.rolesid').val(data.roles);
-                    modal.find('.active').val(data.active);
-                });
-
-                $('.deleteRole').on('click', function (e) {
-                    let id = parseInt($(this).data('id'));
-                    swal({
-                        title: 'Akan Menghapus data?',
-                        text: "Role akan dihapus. Silakan ganti user dengan role tersebut!",
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Hapus',
-                        cancelButtonText: 'Batalkan',
-                        confirmButtonClass: 'btn btn-success',
-                        cancelButtonClass: 'btn btn-danger',
-                        buttonsStyling: false
-                    }).then(function (result) {
-                        if (result.value) {
-                            $.ajax({
-                                url: '{!! route('kitchen.roles.delete') !!}',
-                                type: "DELETE",
-                                data: {
-                                    id: id
-                                },
-                                success: function (response) {
-                                    $('.form input').val('');
-                                    $('.form input').attr('disabled', 'disabled');
-                                    $('.form button').attr('disabled', 'disabled');
-                                    $('#form').removeAttr('action');
-                                    if (response.code === 200) {
-                                        new Noty({
-                                            theme: ' alert bg-success text-white alert-styled-left p-0',
-                                            text: 'Data Berhasil dihapus.',
-                                            type: 'success',
-                                            progressBar: true,
-                                        }).show();
-                                        dtpegawai.ajax.reload();
-                                    } else if (response.code === 500) {
-                                        new Noty({
-                                            theme: ' alert bg-danger text-white alert-styled-left p-0',
-                                            text: 'Data Gagal dihapus.',
-                                            type: 'danger',
-                                            progressBar: true,
-                                        }).show();
-                                    } else {
-                                        alert('Hubungi Admin!');
-                                    }
-                                },
-                                error: function (jqXHR, textStatus, errorThrown) {
-                                    console.log(textStatus, errorThrown);
-                                }
-                            });
-                        } else if (result.dismiss === swal.DismissReason.cancel) {
-                            swal(
-                                'Dibatalkan!',
-                                'Role tidak dihapus',
-                                'error'
-                            );
-                        }
-                    });
+                    modal.find('input[name="nik"]').val(data.nik);
+                    modal.find('input[name="gender"]').val(data.gender);
+                    modal.find('input[name="gelar_depan"]').val(data.gelar_depan);
+                    modal.find('input[name="nama"]').val(data.nama);
+                    modal.find('input[name="gelar_belakang"]').val(data.gelar_belakang);
+                    modal.find('input[name="tempat_lahir"]').val(data.tempat_lahir);
+                    modal.find('input[name="tanggal_lahir"]').val(data.tanggal_lahir);
+                    modal.find('input[name="alamat"]').val(data.alamat);
+                    modal.find('.unitID').val(data.unitid).trigger('change');
+                    modal.find('.status_kawin').val(data.status_kawin).trigger('change');
+                    modal.find('input[name="jumlah_tanggungan"]').val(data.jumlah_tanggungan);
+                    modal.find('.status_pegawai').val(data.status_pegawai).trigger('change');
+                    modal.find('input[name="tanggal_masuk"]').val(data.tanggal_masuk);
+                    modal.find('input[name="masa_kerja"]').val(data.masa_kerja);
+                    modal.find('input[name="golonganID"]').val(data.golonganid);
+                    modal.find('input[name="ruangID"]').val(data.ruangid);
+                    modal.find('.strukturalID').val(data.strukturalid).trigger('change');
+                    modal.find('.fungsionalID').val(data.fungsionalid).trigger('change');
+                    modal.find('.bankID').val(data.bankid).trigger('change');
+                    modal.find('input[name="nomor_rekening"]').val(data.nomor_rekening);
+                    modal.find('input[name="npwp"]').val(data.npwp);
+                    modal.find('.aktif').val(data.aktif);
                 });
             }
         });

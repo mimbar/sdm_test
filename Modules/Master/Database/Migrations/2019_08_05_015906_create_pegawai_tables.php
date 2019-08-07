@@ -35,7 +35,7 @@ class CreatePegawaiTables extends Migration
             $table->integer('strukturalID')->nullable();
             $table->integer('fungsionalID')->nullable();
             $table->integer('bankID')->default(1);
-            $table->integer('nomor_rekening')->default(0);
+            $table->string('nomor_rekening')->nullable();
             $table->string('npwp')->nullable();
             $table->tinyInteger('aktif')->default(1);
             $table->nullableTimestamps();

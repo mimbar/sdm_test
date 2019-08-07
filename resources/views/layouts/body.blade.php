@@ -41,6 +41,7 @@
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/notifications/noty.min.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/inputs/duallistbox/duallistbox.min.js') }}"></script>
+    <script src="{{ asset('assets/batagor/global_assets/js/plugins/loadingoverlay/loadingoverlay.min.js') }}"></script>
 
     <script src="{{ asset('assets/batagor/js/app.js') }}"></script>
     <!-- /theme JS files -->

@@ -23,5 +23,7 @@ Route::group([
         Route::get('/', 'PegawaiController@index')->name('read');
         Route::post('/', 'PegawaiController@create')->name('create');
         Route::patch('/', 'PegawaiController@update')->name('update');
+
+        Route::patch('kalkulasi', 'PegawaiController@kalkulasi')->name('kalkulasi');
     });
 });

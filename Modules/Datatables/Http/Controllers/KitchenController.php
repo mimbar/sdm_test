@@ -52,7 +52,7 @@ class KitchenController extends Controller
 
     public function allPegawai()
     {
-        $pegawai = Pegawai::all();
+        $pegawai = Pegawai::with('unit')->get();
         return datatables()->of($pegawai)->toJson();
     }
 }

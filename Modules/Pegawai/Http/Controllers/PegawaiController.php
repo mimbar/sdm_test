@@ -62,4 +62,60 @@ class PegawaiController extends Controller
             ]);
         }
     }
+
+    public function update(Request $request){
+        try{
+            $pegawai = Pegawai::find($request->input('id'));
+            $pegawai->gelar_depan = $request->input('gelar_depan');
+            $pegawai->nama = $request->input('nama');
+            $pegawai->gelar_belakang = $request->input('gelar_belakang');
+            $pegawai->tempat_lahir = $request->input('tempat_lahir');
+            $pegawai->tanggal_lahir = Carbon::createFromFormat('d-m-Y', $request->input('tanggal_lahir'))->format('Y-m-d');
+            $pegawai->status_kawin = $request->input('status_kawin');
+            $pegawai->jumlah_tanggungan = $request->input('jumlah_tanggungan');
+            $pegawai->bankID = $request->input('bankID');
+            $pegawai->nomor_rekening = $request->input('nomor_rekening');
+            $pegawai->tanggal_masuk = Carbon::createFromFormat('d-m-Y', $request->input('tanggal_masuk'))->format('Y-m-d');
+            $pegawai->masa_kerja = Carbon::createFromFormat('d-m-Y', $request->input('tanggal_masuk'))->age;
+            $pegawai->status_pegawai = $request->input('status_pegawai');
+            $pegawai->unitID = $request->input('unitID');
+            $pegawai->nik = $request->input('nik');
+            $pegawai->npwp = $request->input('npwp');
+            $pegawai->golonganID = $request->input('golonganID');
+            $pegawai->ruangID = $request->input('ruangID');
+            $pegawai->strukturalID = $request->input('strukturalID');
+            $pegawai->fungsionalID = $request->input('fungsionalID');
+            $pegawai->aktif = $request->input('aktif');
+            $pegawai->save();
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        }catch (\Exception $exception){
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
+            ]);
+        }
+    }
+
+    public function kalkulasi(){
+        try{
+            $pegawais = Pegawai::all();
+
+            foreach ($pegawais as $pegawai) {
+                $pegawai->masa_kerja = $pegawai->tanggal_masuk->age;
+                $pegawai->save();
+            }
+
+            return \response()->json([
+                'code' => 200
+            ]);
+        }catch (\Exception $exception){
+            return \response()->json([
+                'code' => 500,
+                'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
+            ]);
+        }
+    }
 }

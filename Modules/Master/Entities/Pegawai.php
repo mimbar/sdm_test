@@ -30,6 +30,11 @@ class Pegawai extends Model
         'aktif',
     ];
 
+    protected $casts = [
+        'tanggal_lahir' => 'date:d-m-Y',
+        'tanggal_masuk' => 'date:d-m-Y',
+    ];
+
     public function unit(){
         return $this->belongsTo(UnitKerja::class,'unitID');
     }
