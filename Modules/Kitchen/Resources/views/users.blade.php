@@ -276,11 +276,13 @@
                 }
             ],
             "rowCallback": function (row, data) {
-                let active = '';
+                let activeClass = '';
                 if(data.active === 0)
-                    active = '<span class="badge badge-danger">Banned</span>';
+                    activeClass = 'badge-danger';
+                else
+                    activeClass = 'badge-success';
 
-                    $('td:eq(4)', row).html('<span class="badge badge-success ml-2 mr-1">' + data.level[0].display_name + '</span>' +  active);
+                $('td:eq(4)', row).html('<span class="badge '+activeClass+' ml-2 mr-1" style="width: 90px">' + data.level[0].display_name + '</span>');
 
                 $('td:eq(5)', row).html('<div class="btn-group">' +
                     '<button type="button" class="btn btn-sm btn-success editUsers"' +

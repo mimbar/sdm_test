@@ -417,10 +417,21 @@
                 }
             ],
             "rowCallback": function (row, data) {
-                let active = '';
+                let active = '', gelar_depan = '', nama = '', gelar_belakang = '';
                 if (data.active === 0)
                     active = '<span class="badge badge-danger">Banned</span>';
-                $('td:eq(3)', row).html(data.gelar_depan+' '+data.nama+' '+data.gelar_belakang);
+
+                if (data.gelar_depan){
+                    gelar_depan = data.gelar_depan;
+                }
+
+                if (data.gelar_belakang){
+                    gelar_belakang = ", "+data.gelar_belakang;
+                }
+
+                nama = data.nama;
+
+                $('td:eq(3)', row).html(gelar_depan+' '+nama+gelar_belakang);
                 $('td:eq(4)', row).html(data.golonganID+''+data.ruangID);
                 $('td:eq(5)', row).html(data.masa_kerja+' Tahun');
 

@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/batagor/global_assets/js/plugins/loadingoverlay/loadingoverlay.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Datatables/Http/Controllers/KitchenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015906_create_pegawai_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Database/Migrations/2019_08_05_015906_create_pegawai_tables.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Master/Entities/Pegawai.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Entities/Pegawai.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Pegawai/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Pegawai/Routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +205,11 @@
       <workItem from="1565060524386" duration="6009000" />
       <workItem from="1565073215069" duration="8036000" />
       <workItem from="1565138329247" duration="141000" />
-      <workItem from="1565140503537" duration="7144000" />
+      <workItem from="1565140503537" duration="7264000" />
+      <workItem from="1565164384450" duration="52000" />
+      <workItem from="1565165555438" duration="1028000" />
+      <workItem from="1565237625068" duration="55000" />
+      <workItem from="1565250793429" duration="866000" />
     </task>
     <servers />
   </component>
