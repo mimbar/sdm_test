@@ -191,7 +191,6 @@
                                     <div class="col-sm-6">
                                         <label>NPWP</label>
                                         <input type="text" placeholder="NPWP" name="npwp"
-                                               data-mask="99.999.999.9-999.999"
                                                class="form-control">
                                     </div>
                                 </div>
