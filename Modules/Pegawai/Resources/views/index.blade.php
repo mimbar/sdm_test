@@ -124,18 +124,19 @@
                         <div class="tab-pane fade" id="dataKeuangan">
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <label>Bank</label>
-                                        <select name="bankID" class="form-control bankID">
-                                            @foreach($banks as $bank)
-                                                <option value="{{ $bank->id }}">{{ $bank->name }}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="col-sm-4">
+                                        <label>Nomor Rekening Mandiri</label>
+                                        <input name="norek_mandiri" type="text" placeholder="Nomor Rekening Mandiri"
+                                               class="form-control">
                                     </div>
-
-                                    <div class="col-sm-6">
-                                        <label>Nomor Rekening</label>
-                                        <input type="text" placeholder="Nomor Rekening" name="nomor_rekening"
+                                    <div class="col-sm-4">
+                                        <label>Nomor Rekening BJB</label>
+                                        <input name="norek_bjb" type="text" placeholder="Nomor Rekening BJB"
+                                               class="form-control">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Nomor Rekening BJBS</label>
+                                        <input name="norek_bjbs" type="text" placeholder="Nomor Rekening BJBS"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -200,14 +201,23 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Golongan</label>
-                                        <input type="text" placeholder="Golongan" name="golonganID"
-                                               class="form-control">
+                                        <select name="golonganID" class="form-control golonganID">
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                            <option value="III">III</option>
+                                            <option value="IV">IV</option>
+                                        </select>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>Ruang</label>
-                                        <input type="text" placeholder="Ruang" name="ruangID"
-                                               class="form-control">
+                                        <select name="ruangID" class="form-control ruangID">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -418,9 +428,6 @@
             ],
             "rowCallback": function (row, data) {
                 let active = '', gelar_depan = '', nama = '', gelar_belakang = '';
-                if (data.active === 0)
-                    active = '<span class="badge badge-danger">Banned</span>';
-
                 if (data.gelar_depan){
                     gelar_depan = data.gelar_depan;
                 }
@@ -441,8 +448,8 @@
                     ' data-nama="' + data.nama + '" data-gelar_belakang="' + data.gelar_belakang + '"' + '" data-tempat_lahir="' + data.tempat_lahir + '"' + '" data-tanggal_lahir="' + data.tanggal_lahir + '"' +
                     ' data-alamat="' + data.alamat + '" data-unitid="' + data.unitID + '"' + '" data-status_kawin="' + data.status_kawin + '"' + '" data-jumlah_tanggungan="' + data.jumlah_tanggungan + '"' +
                     ' data-status_pegawai="' + data.status_pegawai + '" data-tanggal_masuk="' + data.tanggal_masuk + '"' + '" data-masa_kerja="' + data.masa_kerja + '"' + '" data-golonganid="' + data.golonganID + '"' +
-                    ' data-ruangid="' + data.ruangID + '" data-strukturalid="' + data.strukturalID + '"' + '" data-fungsionalid="' + data.fungsionalID + '"' + '" data-bankid="' + data.bankID + '"' +
-                    ' data-nomor_rekening="' + data.nomor_rekening + '" data-npwp="' + data.npwp + '"' + '" data-aktif="' + data.aktif + '"' +
+                    ' data-ruangid="' + data.ruangID + '" data-strukturalid="' + data.strukturalID + '"' + '" data-fungsionalid="' + data.fungsionalID + '"' + '" data-norek_mandiri="' + data.norek_mandiri + '"' +
+                    ' data-norek_bjb="' + data.norek_bjb + '" data-norek_bjbs="' + data.norek_bjbs + '" data-npwp="' + data.npwp + '"' + '" data-aktif="' + data.aktif + '"' +
                     ' >' +
                     '<i class="fa fa-edit"></i> Sunting' +
                     '</button>' +
@@ -470,12 +477,13 @@
                     modal.find('.status_pegawai').val(data.status_pegawai).trigger('change');
                     modal.find('input[name="tanggal_masuk"]').val(data.tanggal_masuk);
                     modal.find('input[name="masa_kerja"]').val(data.masa_kerja);
-                    modal.find('input[name="golonganID"]').val(data.golonganid);
-                    modal.find('input[name="ruangID"]').val(data.ruangid);
+                    modal.find('.golonganID').val(data.golonganid);
+                    modal.find('.ruangID').val(data.ruangid);
                     modal.find('.strukturalID').val(data.strukturalid).trigger('change');
                     modal.find('.fungsionalID').val(data.fungsionalid).trigger('change');
-                    modal.find('.bankID').val(data.bankid).trigger('change');
-                    modal.find('input[name="nomor_rekening"]').val(data.nomor_rekening);
+                    modal.find('input[name="norek_mandiri"]').val(data.norek_mandiri);
+                    modal.find('input[name="norek_bjb"]').val(data.norek_bjb);
+                    modal.find('input[name="norek_bjbs"]').val(data.norek_bjbs);
                     modal.find('input[name="npwp"]').val(data.npwp);
                     modal.find('.aktif').val(data.aktif);
                 });

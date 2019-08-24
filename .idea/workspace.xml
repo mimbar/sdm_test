@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Kitchen/Resources/views/users.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,6 +208,14 @@
       <workItem from="1565165555438" duration="1028000" />
       <workItem from="1565237625068" duration="55000" />
       <workItem from="1565250793429" duration="866000" />
+      <workItem from="1565334530061" duration="238000" />
+      <workItem from="1565335535870" duration="1124000" />
+      <workItem from="1565669468553" duration="46000" />
+      <workItem from="1565690568700" duration="203000" />
+      <workItem from="1565926676501" duration="947000" />
+      <workItem from="1566549229001" duration="133000" />
+      <workItem from="1566618730218" duration="127000" />
+      <workItem from="1566624935375" duration="808000" />
     </task>
     <servers />
   </component>
