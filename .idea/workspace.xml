@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/deploy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravelcore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravelcore.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Auth/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Auth/Routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Home/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Home/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +132,12 @@
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
       <path value="$PROJECT_DIR$/vendor/nwidart/laravel-modules" />
       <path value="$PROJECT_DIR$/vendor/lavary/laravel-menu" />
+      <path value="$PROJECT_DIR$/vendor/lorisleiva/laravel-deployer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/pimple/pimple" />
+      <path value="$PROJECT_DIR$/vendor/deployer/phar-update" />
+      <path value="$PROJECT_DIR$/vendor/deployer/deployer" />
+      <path value="$PROJECT_DIR$/vendor/deployer/recipes" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OfyrI6lbDW9enDFCJmJ43ScIaG" />
@@ -215,6 +229,18 @@
       <workItem from="1566549229001" duration="133000" />
       <workItem from="1566618730218" duration="127000" />
       <workItem from="1566624935375" duration="1859000" />
+      <workItem from="1566631262064" duration="761000" />
+      <workItem from="1566803656339" duration="139000" />
+      <workItem from="1566881454325" duration="157000" />
+      <workItem from="1566882397690" duration="113000" />
+      <workItem from="1568093385268" duration="2474000" />
+      <workItem from="1568102001022" duration="852000" />
+      <workItem from="1568962905057" duration="5782000" />
+      <workItem from="1569204623010" duration="1172000" />
+      <workItem from="1569554873200" duration="77000" />
+      <workItem from="1569554975090" duration="2987000" />
+      <workItem from="1570592682224" duration="390000" />
+      <workItem from="1571969851385" duration="348000" />
     </task>
     <task id="LOCAL-00001" summary="update nomor rekening">
       <created>1566626141359</created>
@@ -223,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566626141359</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update npwp">
+      <created>1566631315231</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1566631315231</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +278,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update nomor rekening" />
-    <option name="LAST_COMMIT_MESSAGE" value="update nomor rekening" />
+    <MESSAGE value="update npwp" />
+    <option name="LAST_COMMIT_MESSAGE" value="update npwp" />
   </component>
 </project>

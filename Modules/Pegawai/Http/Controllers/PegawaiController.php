@@ -36,8 +36,9 @@ class PegawaiController extends Controller
                 'tanggal_lahir' => Carbon::createFromFormat('d-m-Y', $request->input('tanggal_lahir'))->format('Y-m-d'),
                 'status_kawin' => $request->input('status_kawin'),
                 'jumlah_tanggungan' => $request->input('jumlah_tanggungan'),
-                'bankID' => $request->input('bankID'),
-                'nomor_rekening' => $request->input('nomor_rekening'),
+                'norek_mandiri' => $request->input('norek_mandiri'),
+                'norek_bjb' => $request->input('norek_bjb'),
+                'norek_bjbs' => $request->input('norek_bjbs'),
                 'tanggal_masuk' => Carbon::createFromFormat('d-m-Y', $request->input('tanggal_masuk'))->format('Y-m-d'),
                 'masa_kerja' => Carbon::createFromFormat('d-m-Y', $request->input('tanggal_masuk'))->age,
                 'status_pegawai' => $request->input('status_pegawai'),
@@ -73,8 +74,9 @@ class PegawaiController extends Controller
             $pegawai->tanggal_lahir = Carbon::createFromFormat('d-m-Y', $request->input('tanggal_lahir'))->format('Y-m-d');
             $pegawai->status_kawin = $request->input('status_kawin');
             $pegawai->jumlah_tanggungan = $request->input('jumlah_tanggungan');
-            $pegawai->bankID = $request->input('bankID');
-            $pegawai->nomor_rekening = $request->input('nomor_rekening');
+            $pegawai->norek_mandiri = $request->input('norek_mandiri');
+            $pegawai->norek_bjb = $request->input('norek_bjb');
+            $pegawai->norek_bjbs = $request->input('norek_bjbs');
             $pegawai->tanggal_masuk = Carbon::createFromFormat('d-m-Y', $request->input('tanggal_masuk'))->format('Y-m-d');
             $pegawai->masa_kerja = Carbon::createFromFormat('d-m-Y', $request->input('tanggal_masuk'))->age;
             $pegawai->status_pegawai = $request->input('status_pegawai');

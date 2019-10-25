@@ -11,7 +11,6 @@ class HomeController extends Controller
     public function index()
     {
         return view('home::home.dashboard');
-//        return view('home::index');
     }
 
     public function acl(){

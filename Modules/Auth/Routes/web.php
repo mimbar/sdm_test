@@ -12,6 +12,7 @@
 */
 
 
+use Illuminate\Support\Facades\Auth;
 
 Route::group([
     'prefix' => 'auth',
@@ -30,4 +31,8 @@ Route::group([
     Route::get('adduser', function(){
 
     });
+});
+
+Route::get('sess', function () {
+    dd(Auth::user());
 });
