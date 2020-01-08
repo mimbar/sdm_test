@@ -452,6 +452,16 @@
                     ' >' +
                     '<i class="fa fa-edit"></i> Sunting' +
                     '</button>' +
+                    '<a href="pegawai/'+data.id+'/depan" class="btn btn-danger"' +
+                    '  target="popup"' +
+                    '  onclick="window.open(\'pegawai/'+data.id+'/depan\',\'popup\',\'width=600,height=600,scrollbars=no,resizable=no\'); return false;">' +
+                    '    KP Depan' +
+                    '</a>'+
+                    '<a href="pegawai/'+data.id+'/belakang" class="btn btn-danger"' +
+                    '  target="popup"' +
+                    '  onclick="window.open(\'pegawai/'+data.id+'/belakang\',\'popup\',\'width=600,height=600,scrollbars=no,resizable=no\'); return false;">' +
+                    '    KP Belakang' +
+                    '</a>'+
                     '</div>');
             },
             "drawCallback": function () {

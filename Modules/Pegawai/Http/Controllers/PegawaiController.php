@@ -3,6 +3,7 @@
 namespace Modules\Pegawai\Http\Controllers;
 
 use Carbon\Carbon;
+use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -120,4 +121,69 @@ class PegawaiController extends Controller
             ]);
         }
     }
+
+    public function printDepan($id){
+        try{
+            ob_end_clean();
+            $pegawai = Pegawai::find($id);
+            $gelar_depan = '';
+            $gelar_belakang = '';
+            if (strlen($pegawai->gelar_depan) > 0){
+                $gelar_depan = "$pegawai->gelar_depan ";
+            }
+
+            if (strlen($pegawai->gelar_belakang) > 0){
+                $gelar_belakang = ", $pegawai->gelar_belakang";
+            }
+
+            $nama = $gelar_depan.$pegawai->nama.$gelar_belakang;
+            $fpdf = new Fpdf('P','mm',array(55,90));
+            $fpdf->addPage();
+            $fpdf->SetAutoPageBreak(false);
+            $fpdf->setMargins('0','0','0');
+            $fpdf->Image('assets/bg_kartu_nama.jpg', -20, -31, 165, 153);
+            $fpdf->SetFont('Courier', 'B', 9);
+            $fpdf->setY(68);
+            $fpdf->Cell(55,5,$pegawai->nama,0,0,"C",false);
+            $fpdf->Output();
+            exit;
+        }catch (\Exception $exception){
+            echo $exception->getMessage();
+        }
+    }
+
+    public function printBelakang($id){
+        try{
+            ob_end_clean();
+            $pegawai = Pegawai::find($id);
+            $gelar_depan = '';
+            $gelar_belakang = '';
+            if (strlen($pegawai->gelar_depan) > 0){
+                $gelar_depan = "$pegawai->gelar_depan ";
+            }
+
+            if (strlen($pegawai->gelar_belakang) > 0){
+                $gelar_belakang = ", $pegawai->gelar_belakang";
+            }
+
+            $nama = $gelar_depan.$pegawai->nama.$gelar_belakang;
+            $fpdf = new Fpdf('P','mm',array(55,90));
+            $fpdf->addPage();
+            $fpdf->SetAutoPageBreak(false);
+            $fpdf->setMargins('19','0','0');
+            $fpdf->Image('assets/bg_kartu_nama.jpg', -85, -32, 165, 155);
+            $fpdf->SetFont('Courier', 'B', 8);
+            $fpdf->setY(9);
+            $fpdf->Write(3,$nama);
+            $fpdf->setY(14);
+            $fpdf->Cell(67,5,$pegawai->nik,0,0,"L",false);
+            $fpdf->setY(21);
+            $fpdf->Write(3,$pegawai->unit->nama);
+            $fpdf->Output();
+            exit;
+        }catch (\Exception $exception){
+            echo $exception->getMessage();
+        }
+    }
+
 }
