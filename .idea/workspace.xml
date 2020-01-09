@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Modules/Master/Entities/Pegawai.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Master/Entities/Pegawai.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -249,6 +248,7 @@
       <workItem from="1571969851385" duration="348000" />
       <workItem from="1578493771205" duration="5804000" />
       <workItem from="1578540559223" duration="7166000" />
+      <workItem from="1578557752030" duration="274000" />
     </task>
     <task id="LOCAL-00001" summary="update nomor rekening">
       <created>1566626141359</created>

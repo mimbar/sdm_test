@@ -1,7 +1,7 @@
 <?php
 
 namespace Modules\Pegawai\Http\Controllers;
-
+ini_set("gd.jpeg_ignore_warning", 1);
 use Carbon\Carbon;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
