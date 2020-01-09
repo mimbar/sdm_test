@@ -214,8 +214,8 @@ class PegawaiController extends Controller
             $pegawai = Pegawai::find($request->input('pegawaiID'));
             $file = $request->file('file');
             $fileOrig = $file->getClientOriginalName();
-            $fileName = $pegawai->id.'_ORI.' . $file->getClientOriginalExtension();
-            $fileNameResize = $pegawai->id.'_RES.' . $file->getClientOriginalExtension();
+            $fileName = $pegawai->id.'_ORI.' . strtolower($file->getClientOriginalExtension());
+            $fileNameResize = $pegawai->id.'_RES.' . strtolower($file->getClientOriginalExtension());
             Storage::putFileAs(
                 'assets/photo/', $file, $fileName
             );
