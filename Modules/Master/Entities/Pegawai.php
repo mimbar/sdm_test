@@ -8,6 +8,7 @@ class Pegawai extends Model
 {
     protected $table = 'pegawai';
     protected $fillable = [
+        'nidn','nip','nik',
         'gelar_depan',
         'nama',
         'gelar_belakang',

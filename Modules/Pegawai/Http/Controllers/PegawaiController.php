@@ -32,6 +32,9 @@ class PegawaiController extends Controller
     public function create(Request $request){
         try{
             $pegawai = new Pegawai([
+                'nidn' => $request->input('nidn'),
+                'nip' => $request->input('nip'),
+                'nopeg' => $request->input('nopeg'),
                 'gelar_depan' => $request->input('gelar_depan'),
                 'nama' => $request->input('nama'),
                 'gelar_belakang' => $request->input('gelar_belakang'),
@@ -70,6 +73,10 @@ class PegawaiController extends Controller
     public function update(Request $request){
         try{
             $pegawai = Pegawai::find($request->input('id'));
+            $pegawai->nidn = $request->input('nidn');
+            $pegawai->nip = $request->input('nip');
+            $pegawai->nopeg = $request->input('nopeg');
+
             $pegawai->gelar_depan = $request->input('gelar_depan');
             $pegawai->nama = $request->input('nama');
             $pegawai->gelar_belakang = $request->input('gelar_belakang');
