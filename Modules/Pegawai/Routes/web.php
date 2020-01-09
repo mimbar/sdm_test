@@ -29,7 +29,7 @@ Route::group([
         Route::get('{id}/depan', 'PegawaiController@printDepan')->name('print.depan');
         Route::get('{id}/belakang', 'PegawaiController@printBelakang')->name('print.belakang');
 
-
+        Route::post('upload', 'PegawaiController@upload')->name('upload');
 
         Route::patch('kalkulasi', 'PegawaiController@kalkulasi')->name('kalkulasi');
     });

@@ -58,6 +58,7 @@
                                 Kepegawaian</a></li>
                         <li class="nav-item"><a href="#dataKeuangan" class="nav-link" data-toggle="tab">Data
                                 Keuangan</a></li>
+                        <li class="nav-item"><a href="#datauploadfoto" class="nav-link" data-toggle="tab">Upload Foto</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -183,8 +184,28 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <label>NIDN</label>
+                                        <input type="text" placeholder="Nomor Induk Dosen Nasional" name="nidn" class="form-control">
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>NIP</label>
+                                        <input type="text" placeholder="Nomor Induk Pegawai" name="nip" class="form-control">
+                                    </div>
+
+                                    <div class="col-sm-4">
                                         <label>NIK</label>
+                                        <input type="text" placeholder="Nomor Induk Karyawan" name="nopeg"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Nomor Induk Kependudukan</label>
                                         <input type="text" placeholder="NIK" name="nik" class="form-control">
                                     </div>
 
@@ -257,6 +278,11 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="tab-pane fade" id="datauploadfoto">
+                            <form action="pegawai/upload" class="dropzone" id="my-awesome-dropzone"
+                                  enctype="multipart/form-data"></form>
+                        </div>
                     </div>
 
 
@@ -273,6 +299,37 @@
 
 @section('scripts')
     <script>
+        Dropzone.autoDiscover = false;
+
+        var myDropzone = new Dropzone('.dropzone', {
+            paramName: "file",
+            dictDefaultMessage: 'Drop files to upload <span>or CLICK</span>',
+            maxFilesize: 20,
+            acceptedFiles: ".jpg, .jpeg, .png",
+            dictInvalidFileType: "Jenis File tidak diizinkan",
+            addRemoveLinks: true,
+            dictRemoveFileConfirmation: 'Akan Menghapus File ?',
+            dictRemoveFile: "Hapus File",
+            success: function (file, response) {
+                if (response.code === 200) {
+                    file.previewElement.classList.add("dz-success");
+                    theFiles[file.name] = {"file_name" : response.file_name };
+                } else if (response.code === 500) {
+                    file.previewElement.classList.add("dz-error");
+                }
+            },
+            removedfile: function (file) {
+                $.post(
+                    "rab/kaktor/delete",
+                    {
+                        file_name: theFiles[file.name].file_name
+                    }
+                );
+                var _ref;
+                return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+            }
+        });
+
         let timeout = null,
             checkEmail = $('.checkEmail'),
             checkUsername = $('.checkUsername'),
@@ -443,7 +500,7 @@
 
                 $('td:eq(6)', row).html('<div class="btn-group">' +
                     '<button type="button" class="btn btn-sm btn-success editUsers"' +
-                    ' data-id="' + data.id + '" data-nik="' + data.nik + '"' + '" data-gender="' + data.gender + '"' + '" data-gelar_depan="' + data.gelar_depan + '"' +
+                    ' data-id="' + data.id + '" data-nidn="' + data.nidn + '" data-nip="' + data.nip + '"  data-nopeg="' + data.nopeg + '"  data-nik="' + data.nik + '" data-gender="' + data.gender + '"' + '" data-gelar_depan="' + data.gelar_depan + '"' +
                     ' data-nama="' + data.nama + '" data-gelar_belakang="' + data.gelar_belakang + '"' + '" data-tempat_lahir="' + data.tempat_lahir + '"' + '" data-tanggal_lahir="' + data.tanggal_lahir + '"' +
                     ' data-alamat="' + data.alamat + '" data-unitid="' + data.unitID + '"' + '" data-status_kawin="' + data.status_kawin + '"' + '" data-jumlah_tanggungan="' + data.jumlah_tanggungan + '"' +
                     ' data-status_pegawai="' + data.status_pegawai + '" data-tanggal_masuk="' + data.tanggal_masuk + '"' + '" data-masa_kerja="' + data.masa_kerja + '"' + '" data-golonganid="' + data.golonganID + '"' +
@@ -472,6 +529,9 @@
                     modal.find('input[name="strukturalID"]').val(null);
                     modal.find('input[name="fungsionalID"]').val(null);
                     modal.find('input[name="id"]').val(data.id);
+                    modal.find('input[name="nidn"]').val(data.nidn);
+                    modal.find('input[name="nip"]').val(data.nip);
+                    modal.find('input[name="nopeg"]').val(data.nopeg);
                     modal.find('input[name="nik"]').val(data.nik);
                     modal.find('input[name="gender"]').val(data.gender);
                     modal.find('input[name="gelar_depan"]').val(data.gelar_depan);
@@ -495,6 +555,10 @@
                     modal.find('input[name="norek_bjbs"]').val(data.norek_bjbs);
                     modal.find('input[name="npwp"]').val(data.npwp);
                     modal.find('.aktif').val(data.aktif);
+                    myDropzone.on("sending", function(file, xhr, formData) {
+                        formData.append("pegawaiID", data.id);
+                        formData.append("_token", $('meta[name="csrf-token"]').attr('content'));
+                    });
                 });
             }
         });

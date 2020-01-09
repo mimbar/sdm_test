@@ -7,6 +7,8 @@ use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Image;
 use Modules\Master\Entities\Bank;
 use Modules\Master\Entities\Fungsional;
 use Modules\Master\Entities\Pegawai;
@@ -136,15 +138,16 @@ class PegawaiController extends Controller
                 $gelar_belakang = ", $pegawai->gelar_belakang";
             }
 
-            $nama = $gelar_depan.$pegawai->nama.$gelar_belakang;
             $fpdf = new Fpdf('P','mm',array(55,90));
             $fpdf->addPage();
+            $fpdf->AddFont('Quicksand','B','Quicksand-Bold.php');
             $fpdf->SetAutoPageBreak(false);
             $fpdf->setMargins('0','0','0');
-            $fpdf->Image('assets/bg_kartu_nama.jpg', -20, -31, 165, 153);
-            $fpdf->SetFont('Courier', 'B', 9);
+            $fpdf->Image('assets/bg_front.jpg', 0, 0, 55, 90);
+            $fpdf->SetFont('Quicksand', 'B', 9);
             $fpdf->setY(68);
             $fpdf->Cell(55,5,$pegawai->nama,0,0,"C",false);
+            $fpdf->Image('assets/photo/'.$pegawai->id."_RES.jpg",14,27,27,40);
             $fpdf->Output();
             exit;
         }catch (\Exception $exception){
@@ -165,25 +168,71 @@ class PegawaiController extends Controller
             if (strlen($pegawai->gelar_belakang) > 0){
                 $gelar_belakang = ", $pegawai->gelar_belakang";
             }
+            $ids = 0;
+            $id = 0;
 
-            $nama = $gelar_depan.$pegawai->nama.$gelar_belakang;
+            if (strlen($pegawai->nidn) > 0){
+                $ids = $pegawai->nidn;
+                $id = 'NIDN';
+            }elseif (strlen($pegawai->nip) > 0){
+                $ids = $pegawai->nip;
+                $id = 'NIP';
+            }elseif (strlen($pegawai->nidn) > 0){
+                $ids = $pegawai->nidn;
+                $id = 'NIK';
+            }
+
+            $nama = $gelar_depan.ucwords(strtolower($pegawai->nama)).$gelar_belakang;
             $fpdf = new Fpdf('P','mm',array(55,90));
             $fpdf->addPage();
+            $fpdf->AddFont('Quicksand','B','Quicksand-Bold.php');
             $fpdf->SetAutoPageBreak(false);
-            $fpdf->setMargins('19','0','0');
-            $fpdf->Image('assets/bg_kartu_nama.jpg', -85, -32, 165, 155);
-            $fpdf->SetFont('Courier', 'B', 8);
-            $fpdf->setY(9);
+            $fpdf->setMargins('18','0','0');
+            $fpdf->Image('assets/bg_rear.jpg', 0, 0, 55, 90);
+            $fpdf->SetFont('Quicksand', 'B', 7);
+            $fpdf->setY(13.2);
             $fpdf->Write(3,$nama);
-            $fpdf->setY(14);
-            $fpdf->Cell(67,5,$pegawai->nik,0,0,"L",false);
-            $fpdf->setY(21);
+
+            $fpdf->setXY(2.3,18.7);
+            $fpdf->Write(3,$id);
+
+            $fpdf->setY(17.8);
+            $fpdf->Cell(67,5,$ids,0,0,"L",false);
+
+
+            $fpdf->setY(21.7);
             $fpdf->Write(3,$pegawai->unit->nama);
             $fpdf->Output();
             exit;
         }catch (\Exception $exception){
             echo $exception->getMessage();
         }
+    }
+
+    public function upload(Request $request){
+        try{
+            $pegawai = Pegawai::find($request->input('pegawaiID'));
+            $file = $request->file('file');
+            $fileOrig = $file->getClientOriginalName();
+            $fileName = $pegawai->id.'_ORI.' . $file->getClientOriginalExtension();
+            $fileNameResize = $pegawai->id.'_RES.' . $file->getClientOriginalExtension();
+            Storage::putFileAs(
+                'assets/photo/', $file, $fileName
+            );
+
+            $resizeImage  = \Intervention\Image\Facades\Image::make($file)->resize(400, 600, function($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $resizeImage->save('assets/photo/'.$fileNameResize);
+
+        }catch (\Exception $exception){
+            return $return = [
+                'code' => 500,
+                'message' => $exception->getMessage()
+            ];
+        }
+
     }
 
 }
