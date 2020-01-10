@@ -181,12 +181,12 @@ class PegawaiController extends Controller
             $ids = 0;
             $id = 0;
 
-            if ($pegawai->nidn != ""){
-                $ids = $pegawai->nidn;
-                $id = 'NIDN';
-            }elseif ($pegawai->nip != ""){
+            if ($pegawai->nip != ""){
                 $ids = $pegawai->nip;
                 $id = 'NIP';
+            }elseif ($pegawai->nidn != ""){
+                $ids = $pegawai->nidn;
+                $id = 'NIDN';
             }elseif ($pegawai->nopeg != ""){
                 $ids = $pegawai->nopeg;
                 $id = 'NIK';
