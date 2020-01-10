@@ -304,12 +304,10 @@
         var myDropzone = new Dropzone('.dropzone', {
             paramName: "file",
             dictDefaultMessage: 'Drop files to upload <span>or CLICK</span>',
-            maxFilesize: 20,
-            acceptedFiles: ".jpg, .jpeg, .png",
+            maxFilesize: 200,
+            acceptedFiles: ".jpg, .jpeg, .png, .JPG, .JPEG",
             dictInvalidFileType: "Jenis File tidak diizinkan",
-            addRemoveLinks: true,
-            dictRemoveFileConfirmation: 'Akan Menghapus File ?',
-            dictRemoveFile: "Hapus File",
+            addRemoveLinks: false,
             success: function (file, response) {
                 if (response.code === 200) {
                     file.previewElement.classList.add("dz-success");
@@ -561,6 +559,10 @@
                     });
                 });
             }
+        });
+
+        $('#mUser').on('hide.bs.modal', function (e) {
+            $(".dz-preview").remove();
         });
 
     </script>

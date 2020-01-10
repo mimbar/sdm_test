@@ -1,14 +1,17 @@
 <?php
 
 namespace Modules\Pegawai\Http\Controllers;
-ini_set("gd.jpeg_ignore_warning", 1);
+ini_set('upload_max_filesize',200);
+ini_set('post_max_size',200);
 use Carbon\Carbon;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Image;
+use Illuminate\Validation\ValidationData;
+use Illuminate\Validation\Validator;
+use Intervention\Image\Facades\Image;
 use Modules\Master\Entities\Bank;
 use Modules\Master\Entities\Fungsional;
 use Modules\Master\Entities\Pegawai;
@@ -133,7 +136,7 @@ class PegawaiController extends Controller
 
     public function printDepan($id){
         try{
-            ob_end_clean();
+            if (ob_get_length()) ob_end_clean();
             $pegawai = Pegawai::find($id);
             $gelar_depan = '';
             $gelar_belakang = '';
@@ -154,7 +157,7 @@ class PegawaiController extends Controller
             $fpdf->SetFont('Quicksand', 'B', 9);
             $fpdf->setY(68);
             $fpdf->Cell(55,5,$pegawai->nama,0,0,"C",false);
-            $fpdf->Image('assets/photo/'.$pegawai->id."_RES.jpg",14,27,27,40);
+            $fpdf->Image('storage/photo/'.$pegawai->id."_ORI.jpg",14,27,27,40);
             $fpdf->Output();
             exit;
         }catch (\Exception $exception){
@@ -164,7 +167,7 @@ class PegawaiController extends Controller
 
     public function printBelakang($id){
         try{
-            ob_end_clean();
+            if (ob_get_contents()) ob_end_clean();
             $pegawai = Pegawai::find($id);
             $gelar_depan = '';
             $gelar_belakang = '';
@@ -178,14 +181,14 @@ class PegawaiController extends Controller
             $ids = 0;
             $id = 0;
 
-            if (strlen($pegawai->nidn) > 0){
+            if ($pegawai->nidn != ""){
                 $ids = $pegawai->nidn;
                 $id = 'NIDN';
-            }elseif (strlen($pegawai->nip) > 0){
+            }elseif ($pegawai->nip != ""){
                 $ids = $pegawai->nip;
                 $id = 'NIP';
-            }elseif (strlen($pegawai->nidn) > 0){
-                $ids = $pegawai->nidn;
+            }elseif ($pegawai->nopeg != ""){
+                $ids = $pegawai->nopeg;
                 $id = 'NIK';
             }
 
@@ -218,25 +221,28 @@ class PegawaiController extends Controller
 
     public function upload(Request $request){
         try{
+//            $request->validate([
+//                'file' => 'image'
+//            ]);
+
             $pegawai = Pegawai::find($request->input('pegawaiID'));
             $file = $request->file('file');
-            $fileOrig = $file->getClientOriginalName();
-            $fileName = $pegawai->id.'_ORI.' . strtolower($file->getClientOriginalExtension());
-            $fileNameResize = $pegawai->id.'_RES.' . strtolower($file->getClientOriginalExtension());
-            Storage::putFileAs(
-                'assets/photo/', $file, $fileName
+//            $fileOrig = $file->getClientOriginalName();
+            $fileName = $pegawai->id.'_ORI.' . $file->getClientOriginalExtension();
+            $fileNameResize = $pegawai->id.'_RES.' . $file->getClientOriginalExtension();
+            $file->storeAs(
+                'public/photo/', $fileName
             );
 
-            $resizeImage  = \Intervention\Image\Facades\Image::make($file)->resize(400, 600, function($constraint) {
-                $constraint->aspectRatio();
-            });
+//            $resizeImage  = Image::make('public/photo/', $fileName)->resize(400, 600)->save('storage/photo/'.$fileNameResize);
+//            $path = 'assets/photo/'.$fileNameResize;
 
-            $resizeImage->save('assets/photo/'.$fileNameResize);
+//            $resizeImage
 
         }catch (\Exception $exception){
             return $return = [
                 'code' => 500,
-                'message' => $exception->getMessage()
+                'message' => $exception->getMessage().' - '.$exception->getFile().' - '.$exception->getLine(),
             ];
         }
 
