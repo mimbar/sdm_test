@@ -155,7 +155,7 @@ class PegawaiController extends Controller
             $fpdf->SetFont('Quicksand', 'B', 9);
             $fpdf->setY(68);
             $fpdf->Cell(55,5,strtoupper($pegawai->nama),0,0,"C",false);
-            $fpdf->Image('storage/photo/'.$pegawai->id."_ORI.jpg",14,27,27,40);
+            $fpdf->Image('storage/photo/'.$pegawai->id."_RES.jpg",14,27,27,40);
             $fpdf->Output();
             exit;
         }catch (\Exception $exception){

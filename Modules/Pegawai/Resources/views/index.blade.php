@@ -507,15 +507,15 @@
                     ' >' +
                     '<i class="fa fa-edit"></i> Sunting' +
                     '</button>' +
-                    '<a href="pegawai/'+data.id+'/depan" class="btn btn-danger"' +
+                    '<a href="pegawai/'+data.id+'/depan" class="btn btn-info"' +
                     '  target="popup"' +
                     '  onclick="window.open(\'pegawai/'+data.id+'/depan\',\'popup\',\'width=600,height=600,scrollbars=no,resizable=no\'); return false;">' +
-                    '    KP Depan' +
+                    '<i class="fa fa-print"></i> Depan' +
                     '</a>'+
-                    '<a href="pegawai/'+data.id+'/belakang" class="btn btn-danger"' +
+                    '<a href="pegawai/'+data.id+'/belakang" class="btn btn-primary"' +
                     '  target="popup"' +
                     '  onclick="window.open(\'pegawai/'+data.id+'/belakang\',\'popup\',\'width=600,height=600,scrollbars=no,resizable=no\'); return false;">' +
-                    '    KP Belakang' +
+                    '<i class="fa fa-print"></i> Belakang' +
                     '</a>'+
                     '</div>');
             },
