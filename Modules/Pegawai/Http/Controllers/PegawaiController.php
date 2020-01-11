@@ -1,8 +1,6 @@
 <?php
 
 namespace Modules\Pegawai\Http\Controllers;
-ini_set('upload_max_filesize',200);
-ini_set('post_max_size',200);
 use Carbon\Carbon;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
@@ -230,14 +228,13 @@ class PegawaiController extends Controller
 //            $fileOrig = $file->getClientOriginalName();
             $fileName = $pegawai->id.'_ORI.' . $file->getClientOriginalExtension();
             $fileNameResize = $pegawai->id.'_RES.' . $file->getClientOriginalExtension();
+            Storage::delete('public/photo/', $fileName);
             $file->storeAs(
                 'public/photo/', $fileName
             );
 
-//            $resizeImage  = Image::make('public/photo/', $fileName)->resize(400, 600)->save('storage/photo/'.$fileNameResize);
-//            $path = 'assets/photo/'.$fileNameResize;
+            Image::make('storage/photo/'.$fileName)->resize(400, 600)->save('storage/photo/'.$fileNameResize);
 
-//            $resizeImage
 
         }catch (\Exception $exception){
             return $return = [
