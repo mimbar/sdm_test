@@ -29,6 +29,7 @@ class Pegawai extends Model
         'strukturalID',
         'fungstionalID',
         'aktif',
+        'pns_status'
     ];
 
     protected $casts = [

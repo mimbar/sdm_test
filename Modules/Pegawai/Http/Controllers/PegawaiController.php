@@ -57,6 +57,7 @@ class PegawaiController extends Controller
                 'strukturalID' => $request->input('strukturalID'),
                 'fungsionalID' => $request->input('fungsionalID'),
                 'aktif' => $request->input('aktif'),
+                'pns_status' => $request->input('pns_status'),
             ]);
             $pegawai->save();
 
@@ -83,6 +84,7 @@ class PegawaiController extends Controller
             $pegawai->gelar_belakang = $request->input('gelar_belakang');
             $pegawai->tempat_lahir = $request->input('tempat_lahir');
             $pegawai->tanggal_lahir = Carbon::createFromFormat('d-m-Y', $request->input('tanggal_lahir'))->format('Y-m-d');
+            $pegawai->pns_status = $request->input('pns_status');
             $pegawai->status_kawin = $request->input('status_kawin');
             $pegawai->jumlah_tanggungan = $request->input('jumlah_tanggungan');
             $pegawai->norek_mandiri = $request->input('norek_mandiri');

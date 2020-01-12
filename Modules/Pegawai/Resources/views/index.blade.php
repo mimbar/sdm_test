@@ -222,6 +222,7 @@
                                     <div class="col-sm-6">
                                         <label>Golongan</label>
                                         <select name="golonganID" class="form-control golonganID">
+                                            <option value="-">-</option>
                                             <option value="I">I</option>
                                             <option value="II">II</option>
                                             <option value="III">III</option>
@@ -232,6 +233,7 @@
                                     <div class="col-sm-6">
                                         <label>Ruang</label>
                                         <select name="ruangID" class="form-control ruangID">
+                                            <option value="-">-</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="C">C</option>
@@ -268,7 +270,16 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <label>Status PNS Pegawai</label>
+                                        <select name="pns_status" class="form-control">
+                                            <option value="0">Non-PNS</option>
+                                            <option value="1">PNS</option>
+                                            <option value="2">Tenaga Harian Lepas</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
                                         <label>Aktif</label>
                                         <select name="aktif" class="form-control aktif">
                                             <option value="1">Aktif</option>
@@ -443,6 +454,7 @@
             stateSave: true,
             bSort: false,
             paging: false,
+            searching:false,
             info: false,
             "ajax": {
                 "url": "{{ route('dt.pegawai.all') }}",
@@ -453,7 +465,8 @@
                     defaultContent: '-',
                     render: function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
-                    }
+                    },
+                    searchable: true
                 },
                 {
                     "data": 'unit.nama',
@@ -518,7 +531,7 @@
                     '<button type="button" class="btn btn-sm btn-success editUsers"' +
                     ' data-id="' + data.id + '" data-nidn="' + data.nidn + '" data-nip="' + data.nip + '"  data-nopeg="' + data.nopeg + '"  data-nik="' + data.nik + '" data-gender="' + data.gender + '"' + '" data-gelar_depan="' + data.gelar_depan + '"' +
                     ' data-nama="' + data.nama + '" data-gelar_belakang="' + data.gelar_belakang + '"' + '" data-tempat_lahir="' + data.tempat_lahir + '"' + '" data-tanggal_lahir="' + data.tanggal_lahir + '"' +
-                    ' data-alamat="' + data.alamat + '" data-unitid="' + data.unitID + '"' + '" data-status_kawin="' + data.status_kawin + '"' + '" data-jumlah_tanggungan="' + data.jumlah_tanggungan + '"' +
+                    ' data-alamat="' + data.alamat + '" data-pns_status="' + data.pns_status + '" data-unitid="' + data.unitID + '"' + '" data-status_kawin="' + data.status_kawin + '"' + '" data-jumlah_tanggungan="' + data.jumlah_tanggungan + '"' +
                     ' data-status_pegawai="' + data.status_pegawai + '" data-tanggal_masuk="' + data.tanggal_masuk + '"' + '" data-masa_kerja="' + data.masa_kerja + '"' + '" data-golonganid="' + data.golonganID + '"' +
                     ' data-ruangid="' + data.ruangID + '" data-strukturalid="' + data.strukturalID + '"' + '" data-fungsionalid="' + data.fungsionalID + '"' + '" data-norek_mandiri="' + data.norek_mandiri + '"' +
                     ' data-norek_bjb="' + data.norek_bjb + '" data-norek_bjbs="' + data.norek_bjbs + '" data-npwp="' + data.npwp + '"' + '" data-aktif="' + data.aktif + '"' +
@@ -541,7 +554,7 @@
                 $('.editUsers').on('click', function (e) {
                     let data = $(this).data();
                     modal.modal('toggle');
-                    $(':input').val('');
+                    modal.find(':input').val('');
                     modal.find('input[name="strukturalID"]').val(null);
                     modal.find('input[name="fungsionalID"]').val(null);
                     modal.find('input[name="id"]').val(data.id);
@@ -558,6 +571,7 @@
                     modal.find('input[name="alamat"]').val(data.alamat);
                     modal.find('.unitID').val(data.unitid).trigger('change');
                     modal.find('.status_kawin').val(data.status_kawin).trigger('change');
+                    modal.find('select[name="pns_status"]').val(data.pns_status).trigger('change');
                     modal.find('input[name="jumlah_tanggungan"]').val(data.jumlah_tanggungan);
                     modal.find('.status_pegawai').val(data.status_pegawai).trigger('change');
                     modal.find('input[name="tanggal_masuk"]').val(data.tanggal_masuk);
@@ -577,6 +591,10 @@
                     });
                 });
             }
+        });
+
+        modal.on('bs.modal.show', function(){
+            modal.find(':input').val('');
         });
 
         $('#mUser').on('hide.bs.modal', function (e) {
