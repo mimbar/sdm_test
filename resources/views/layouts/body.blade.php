@@ -43,6 +43,7 @@
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/forms/inputs/duallistbox/duallistbox.min.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/loadingoverlay/loadingoverlay.min.js') }}"></script>
     <script src="{{ asset('assets/batagor/global_assets/js/plugins/uploaders/dropzone.min.js') }}"></script>
+    <script src="{{ asset('assets/batagor/global_assets/js/plugins/loadingoverlay/loadingoverlay.min.js') }}"></script>
 
     <script src="{{ asset('assets/batagor/js/app.js') }}"></script>
     <!-- /theme JS files -->

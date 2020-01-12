@@ -381,6 +381,10 @@
 
 
         $('.save').on('click', function (e) {
+            $('body').LoadingOverlay("show", {
+                image: "",
+                fontawesome: "fa fa-cog fa-spin"
+            });
             let modal = $('#mUser'),
                 id = modal.find('input[name="id"]').val(),
                 values = $(':input').serialize(), url, method;
@@ -405,7 +409,8 @@
                             type: 'success',
                             progressBar: true,
                         }).show();
-                        dtpegawai.ajax.reload();
+                        var scrollPos = $(".dataTables_scrollBody").scrollTop();
+
                     } else if (response.code === 500) {
                         new Noty({
                             theme: ' alert bg-danger text-white alert-styled-left p-0',
@@ -416,6 +421,10 @@
                     } else {
                         alert('Hubungi Admin!');
                     }
+                    dtpegawai.ajax.reload(function () {
+                        $(".dataTables_scrollBody").scrollTop(scrollPos);
+                        $('body').LoadingOverlay("hide", true);
+                    }, false);
                     modal.modal('toggle');
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -480,6 +489,15 @@
                     orderable: false, searchable: false
                 }
             ],
+            "initComplete": function (settings, json) {
+                $('body').LoadingOverlay("hide", true);
+            },
+            "preDrawCallback": function () {
+                $('body').LoadingOverlay("show", {
+                    image: "",
+                    fontawesome: "fa fa-cog fa-spin"
+                });
+            },
             "rowCallback": function (row, data) {
                 let active = '', gelar_depan = '', nama = '', gelar_belakang = '';
                 if (data.gelar_depan){

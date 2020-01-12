@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4901914f-193a-4154-89f6-b355aecb3ea3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Pegawai/Http/Controllers/PegawaiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Pegawai/Resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/body.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +253,8 @@
       <workItem from="1578557752030" duration="6068000" />
       <workItem from="1578624991458" duration="1728000" />
       <workItem from="1578650979274" duration="599000" />
-      <workItem from="1578717305215" duration="1350000" />
+      <workItem from="1578717305215" duration="1618000" />
+      <workItem from="1578805613100" duration="1216000" />
     </task>
     <task id="LOCAL-00001" summary="update nomor rekening">
       <created>1566626141359</created>
@@ -295,11 +296,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="update npwp" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="513" y="235" width="894" height="812" key="search.everywhere.popup" timestamp="1578726593984">
+    <state x="626" y="297" width="726" height="486" key="find.popup" timestamp="1578806238664">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="626" y="297" width="726" height="486" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1578806238664" />
+    <state x="513" y="235" width="894" height="812" key="search.everywhere.popup" timestamp="1578806315951">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1578553769315" />
     <state x="513" y="235" width="894" height="812" key="search.everywhere.popup/0.0.1920.1080/1920.-173.1920.1080@0.0.1920.1080" timestamp="1578726593984" />
-    <state x="513" y="235" width="894" height="812" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1578628950228" />
+    <state x="513" y="235" width="894" height="812" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1578806315951" />
   </component>
 </project>
