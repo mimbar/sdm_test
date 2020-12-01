@@ -168,7 +168,7 @@ class PegawaiController extends Controller
             $fpdf->SetFont('Quicksand', 'B', 9);
             $fpdf->setY(64+$y);
             $fpdf->Cell(55, 5, strtoupper($pegawai->nama), 0, 0, "C", false);
-            $fpdf->Image('storage/photo/' . $pegawai->id . "_RES.jpg", 14, 23+$y, 27, 40);
+            $fpdf->Image('storage/photo/' . $pegawai->id . "_RES.jpg", 14, 22.7+$y, 27, 40);
             $fpdf->Image('assets/logo_unsil.png', 21, 1+$y, 12, 12);
             $fpdf->SetFont('Quicksand', 'B', 6);
             $fpdf->setY(14.3+$y);
