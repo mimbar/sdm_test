@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Pegawai\Http\Controllers;
+
 use Carbon\Carbon;
 use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
@@ -20,18 +21,20 @@ use Modules\Master\Entities\UnitKerja;
 
 class PegawaiController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $statusKawin = StatusKawin::all();
         $statusPegawai = StatusPegawai::all();
         $unitkerja = UnitKerja::all();
         $jabatanStruktural = Struktural::all();
         $jabatanFungsional = Fungsional::all();
         $banks = Bank::all();
-        return view('pegawai::index',compact('statusKawin','statusPegawai','unitkerja','jabatanFungsional','jabatanStruktural','banks'));
+        return view('pegawai::index', compact('statusKawin', 'statusPegawai', 'unitkerja', 'jabatanFungsional', 'jabatanStruktural', 'banks'));
     }
 
-    public function create(Request $request){
-        try{
+    public function create(Request $request)
+    {
+        try {
             $pegawai = new Pegawai([
                 'nidn' => $request->input('nidn'),
                 'nip' => $request->input('nip'),
@@ -64,7 +67,7 @@ class PegawaiController extends Controller
             return \response()->json([
                 'code' => 200
             ]);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return \response()->json([
                 'code' => 500,
                 'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
@@ -72,8 +75,9 @@ class PegawaiController extends Controller
         }
     }
 
-    public function update(Request $request){
-        try{
+    public function update(Request $request)
+    {
+        try {
             $pegawai = Pegawai::find($request->input('id'));
             $pegawai->nidn = $request->input('nidn');
             $pegawai->nip = $request->input('nip');
@@ -106,7 +110,7 @@ class PegawaiController extends Controller
             return \response()->json([
                 'code' => 200
             ]);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return \response()->json([
                 'code' => 500,
                 'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
@@ -114,8 +118,9 @@ class PegawaiController extends Controller
         }
     }
 
-    public function kalkulasi(){
-        try{
+    public function kalkulasi()
+    {
+        try {
             $pegawais = Pegawai::all();
 
             foreach ($pegawais as $pegawai) {
@@ -126,7 +131,7 @@ class PegawaiController extends Controller
             return \response()->json([
                 'code' => 200
             ]);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return \response()->json([
                 'code' => 500,
                 'message' => getenv('APP_ENV') == 'local' ? $exception->getMessage() . ' ' . $exception->getFile() . ' ' . $exception->getLine() : "Gagal Input data"
@@ -134,93 +139,138 @@ class PegawaiController extends Controller
         }
     }
 
-    public function printDepan($id){
-        try{
+    public function printDepan($id)
+    {
+        try {
             if (ob_get_length()) ob_end_clean();
             $pegawai = Pegawai::find($id);
             $gelar_depan = '';
             $gelar_belakang = '';
-            if (strlen($pegawai->gelar_depan) > 0){
+            if (strlen($pegawai->gelar_depan) > 0) {
                 $gelar_depan = "$pegawai->gelar_depan ";
             }
 
-            if (strlen($pegawai->gelar_belakang) > 0){
+            if (strlen($pegawai->gelar_belakang) > 0) {
                 $gelar_belakang = ", $pegawai->gelar_belakang";
             }
 
-            $fpdf = new Fpdf('P','mm',array(55,90));
+            $fpdf = new Fpdf('P', 'mm', array(55, 90));
             $fpdf->addPage();
-            $fpdf->AddFont('Quicksand','B','Quicksand-Bold.php');
+            $fpdf->AddFont('Quicksand', 'B', 'Quicksand-Bold.php');
             $fpdf->SetAutoPageBreak(false);
-            $fpdf->setMargins('0','0','0');
+            $fpdf->setMargins('0', '0', '0');
             $fpdf->Image('assets/bg_front.jpg', 0, 0, 55, 90);
             $fpdf->SetFont('Quicksand', 'B', 9);
             $fpdf->setY(68);
-            $fpdf->Cell(55,5,strtoupper($pegawai->nama),0,0,"C",false);
-            $fpdf->Image('storage/photo/'.$pegawai->id."_RES.jpg",14,27,27,40);
+            $fpdf->Cell(55, 5, strtoupper($pegawai->nama), 0, 0, "C", false);
+            $fpdf->Image('storage/photo/' . $pegawai->id . "_RES.jpg", 14, 27, 27, 40);
             $fpdf->Output();
             exit;
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             echo $exception->getMessage();
         }
     }
 
-    public function printBelakang($id){
-        try{
+    public function printBelakang($id)
+    {
+        try {
             if (ob_get_contents()) ob_end_clean();
             $pegawai = Pegawai::find($id);
             $gelar_depan = '';
             $gelar_belakang = '';
-            if (strlen($pegawai->gelar_depan) > 0){
+            if (strlen($pegawai->gelar_depan) > 0) {
                 $gelar_depan = "$pegawai->gelar_depan ";
             }
 
-            if (strlen($pegawai->gelar_belakang) > 0){
+            if (strlen($pegawai->gelar_belakang) > 0) {
                 $gelar_belakang = ", $pegawai->gelar_belakang";
             }
             $ids = 0;
             $id = 0;
 
-            if ($pegawai->nip != ""){
+            if ($pegawai->nip != "") {
                 $ids = $pegawai->nip;
                 $id = 'NIP';
-            }elseif ($pegawai->nidn != ""){
+            } elseif ($pegawai->nidn != "") {
                 $ids = $pegawai->nidn;
                 $id = 'NIDN';
-            }elseif ($pegawai->nopeg != ""){
+            } elseif ($pegawai->nopeg != "") {
                 $ids = $pegawai->nopeg;
                 $id = 'NIK';
             }
 
-            $nama = $gelar_depan.ucwords(strtolower($pegawai->nama)).$gelar_belakang;
-            $fpdf = new Fpdf('P','mm',array(55,90));
+            $nama = $gelar_depan . ucwords(strtolower($pegawai->nama)) . $gelar_belakang;
+            $fpdf = new Fpdf('P', 'mm', array(55, 90));
             $fpdf->addPage();
-            $fpdf->AddFont('Quicksand','B','Quicksand-Bold.php');
+            $fpdf->AddFont('Quicksand', 'B', 'Quicksand-Bold.php');
             $fpdf->SetAutoPageBreak(false);
-            $fpdf->setMargins('18','0','0');
+            $fpdf->setMargins('18', '0', '0');
             $fpdf->Image('assets/bg_rear.jpg', 0, 0, 55, 90);
+            $fpdf->Image('assets/stamp.png', 7, 40.3, 15, 15);
+            $fpdf->Image('assets/ttd_rektor.png', 17.3, 37.3, 13, 21);
+            $fpdf->Image('assets/logo_unsil.png', 15, 63, 7, 7);
             $fpdf->SetFont('Quicksand', 'B', 7);
-            $fpdf->setY(13.2);
-            $fpdf->Write(3,$nama);
 
-            $fpdf->setXY(2.3,18.7);
-            $fpdf->Write(3,$id);
+            $fpdf->setY(13.2);
+            $fpdf->setX(2.3);
+            $fpdf->Write(3, "Nama");
+
+            $fpdf->setY(13.2);
+            $fpdf->setX(16.3);
+            $fpdf->Write(3, ":");
+
+            $fpdf->setY(13.2);
+            $fpdf->Write(3, $nama);
+
+            $fpdf->setXY(2.3, 18.7);
+            $fpdf->Write(3, $id);
+
+            $fpdf->setY(18.7);
+            $fpdf->setX(16.3);
+            $fpdf->Write(3, ":");
 
             $fpdf->setY(17.8);
-            $fpdf->Cell(67,5,$ids,0,0,"L",false);
+            $fpdf->Cell(67, 5, $ids, 0, 0, "L", false);
 
+            $fpdf->setXY(2.3, 21.7);
+            $fpdf->Write(3, "Unit");
+            $fpdf->setY(21.7);
+            $fpdf->Write(3, $pegawai->unit->nama);
 
             $fpdf->setY(21.7);
-            $fpdf->Write(3,$pegawai->unit->nama);
+            $fpdf->setX(16.3);
+            $fpdf->Write(3, ":");
+
+            $fpdf->setY(40.6);
+            $fpdf->setX(10);
+            $fpdf->Write(3, "Rektor Universitas Siliwangi");
+
+            $fpdf->setY(53.6);
+            $fpdf->setX(10);
+            $fpdf->Write(3, "Prof. Dr. Rudi. Priyadi, Ir. MS.");
+
+            $fpdf->setY(56.6);
+            $fpdf->setX(10);
+            $fpdf->Write(3, "NIP. 195806271986031002");
+
+            $fpdf->setXY(22, 63.6);
+            $fpdf->Write(3, "UNIVERSITAS");
+            $fpdf->setXY(22, 66.6);
+            $fpdf->Write(3, "SILIWANGI");
+
+            $fpdf->setXY(7, 82.6);
+            $fpdf->setTextColor(255,255,255);
+            $fpdf->Write(3, "www.unsil.ac.id | (0265) 330 634");
             $fpdf->Output();
             exit;
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             echo $exception->getMessage();
         }
     }
 
-    public function upload(Request $request){
-        try{
+    public function upload(Request $request)
+    {
+        try {
 //            $request->validate([
 //                'file' => 'image'
 //            ]);
@@ -228,23 +278,24 @@ class PegawaiController extends Controller
             $pegawai = Pegawai::find($request->input('pegawaiID'));
             $file = $request->file('file');
 //            $fileOrig = $file->getClientOriginalName();
-            $fileName = $pegawai->id.'_ORI.' . $file->getClientOriginalExtension();
-            $fileNameResize = $pegawai->id.'_RES.' . $file->getClientOriginalExtension();
+            $fileName = $pegawai->id . '_ORI.' . $file->getClientOriginalExtension();
+            $fileNameResize = $pegawai->id . '_RES.' . $file->getClientOriginalExtension();
             Storage::delete('public/photo/', $fileName);
             $file->storeAs(
                 'public/photo/', $fileName
             );
 
-            Image::make('storage/photo/'.$fileName)->resize(400, 600)->save('storage/photo/'.$fileNameResize);
+            Image::make('storage/photo/' . $fileName)->resize(400, 600)->save('storage/photo/' . $fileNameResize);
 
 
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return $return = [
                 'code' => 500,
-                'message' => $exception->getMessage().' - '.$exception->getFile().' - '.$exception->getLine(),
+                'message' => $exception->getMessage() . ' - ' . $exception->getFile() . ' - ' . $exception->getLine(),
             ];
         }
 
     }
+
 
 }
