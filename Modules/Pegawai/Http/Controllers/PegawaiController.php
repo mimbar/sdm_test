@@ -143,6 +143,8 @@ class PegawaiController extends Controller
     {
         try {
             if (ob_get_length()) ob_end_clean();
+
+
             $pegawai = Pegawai::find($id);
             $gelar_depan = '';
             $gelar_belakang = '';
@@ -157,13 +159,26 @@ class PegawaiController extends Controller
             $fpdf = new Fpdf('P', 'mm', array(55, 90));
             $fpdf->addPage();
             $fpdf->AddFont('Quicksand', 'B', 'Quicksand-Bold.php');
+            $y = 3.6;
+
+
             $fpdf->SetAutoPageBreak(false);
             $fpdf->setMargins('0', '0', '0');
-            $fpdf->Image('assets/bg_front.jpg', 0, 0, 55, 90);
+            $fpdf->Image('assets/bg_frnt_fix.jpg', 0, 3+$y, 55, 90);
             $fpdf->SetFont('Quicksand', 'B', 9);
-            $fpdf->setY(68);
+            $fpdf->setY(64+$y);
             $fpdf->Cell(55, 5, strtoupper($pegawai->nama), 0, 0, "C", false);
-            $fpdf->Image('storage/photo/' . $pegawai->id . "_RES.jpg", 14, 27, 27, 40);
+            $fpdf->Image('storage/photo/' . $pegawai->id . "_RES.jpg", 14, 23+$y, 27, 40);
+            $fpdf->Image('assets/logo_unsil.png', 21, 1+$y, 12, 12);
+            $fpdf->SetFont('Quicksand', 'B', 6);
+            $fpdf->setY(14.3+$y);
+            $fpdf->setX(2.8);
+            $fpdf->Write(5, "KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN");
+
+            $fpdf->SetFont('Quicksand', 'B', 11);
+            $fpdf->setY(17.3+$y);
+            $fpdf->setX(2.7);
+            $fpdf->Write(5, "UNIVERSITAS SILIWANGI");
             $fpdf->Output();
             exit;
         } catch (\Exception $exception) {
