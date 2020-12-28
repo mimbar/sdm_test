@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return redirect()->route('home.index');
 });
+
+Route::get('string', function () {
+    return \Illuminate\Support\Facades\Hash::make('operator');
+});

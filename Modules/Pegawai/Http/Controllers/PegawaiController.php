@@ -171,14 +171,13 @@ class PegawaiController extends Controller
             $fpdf->Image('storage/photo/' . $pegawai->id . "_RES.jpg", 14, 22.7+$y, 27, 40);
             $fpdf->Image('assets/logo_unsil.png', 21, 1+$y, 12, 12);
             $fpdf->SetFont('Quicksand', 'B', 6);
-            $fpdf->setY(14.3+$y);
-            $fpdf->setX(2.8);
-            $fpdf->Write(5, "KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN");
+            $fpdf->setXY(0, 10.5+$y);
+//            $fpdf->Write(5, "KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN");
+            $fpdf->Cell(0,10,'KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN',0,0,'C');
 
             $fpdf->SetFont('Quicksand', 'B', 11);
-            $fpdf->setY(17.3+$y);
-            $fpdf->setX(2.7);
-            $fpdf->Write(5, "UNIVERSITAS SILIWANGI");
+            $fpdf->setXY(0,13.5+$y);
+            $fpdf->Cell(0,10,'UNIVERSITAS SILIWANGI',0,0,'C');
             $fpdf->Output();
             exit;
         } catch (\Exception $exception) {

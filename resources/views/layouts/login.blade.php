@@ -95,21 +95,21 @@
 <script>
     particlesJS.load('particles-js', '../../assets/batagor/global_assets/js/plugins/particle/particlesjs-config.json');
 
-    @if(session('loginStatus')['code'] === 404)
+    @if(session('loginStatus') and session('loginStatus')['code'] === 404)
     new Noty({
         theme: ' alert bg-danger text-white alert-styled-left p-0',
         text: 'Username atau Password salah.',
         type: 'error',
         progressBar: true,
     }).show();
-    @elseif(session('loginStatus')['code'] === 500)
+    @elseif(session('loginStatus') and session('loginStatus')['code'] === 500)
     new Noty({
         theme: ' alert bg-danger text-white alert-styled-left p-0',
         text: "{!! session('loginStatus')['message'] !!}",
         type: 'danger',
         progressBar: true,
     }).show();
-    @elseif(session('loginStatus')['code'] === 401)
+    @elseif(session('loginStatus') and session('loginStatus')['code'] === 401)
     new Noty({
         theme: ' alert bg-danger text-white alert-styled-left p-0',
         text: "{!! session('loginStatus')['message'] !!}",
