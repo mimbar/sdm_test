@@ -182,9 +182,9 @@
 
                                     <div class="col-sm-4">
                                         <label>Mata Kuliah</label>
-                                        <select name="mata_kuliah" class="form-control mata_kuliah">
-                                            @foreach($mata_kuliah as $mk)
-                                                <option value="{{ $unit->id }}">{{ $mk->nama }}</option>
+                                        <select name="matkulID" class="form-control matkulID">
+                                            @foreach($mata_kuliah as $matkul)
+                                                <option value="{{ $matkul->id }}">{{ $matkul->nama }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -543,7 +543,7 @@
                     ' data-alamat="' + data.alamat + '" data-pns_status="' + data.pns_status + '" data-unitid="' + data.unitID + '"' + '" data-status_kawin="' + data.status_kawin + '"' + '" data-jumlah_tanggungan="' + data.jumlah_tanggungan + '"' +
                     ' data-status_dosen="' + data.status_dosen + '" data-tanggal_masuk="' + data.tanggal_masuk + '"' + '" data-masa_kerja="' + data.masa_kerja + '"' + '" data-golonganid="' + data.golonganID + '"' +
                     ' data-ruangid="' + data.ruangID + '" data-strukturalid="' + data.strukturalID + '"' + '" data-fungsionalid="' + data.fungsionalID + '"' + '" data-norek_mandiri="' + data.norek_mandiri + '"' +
-                    ' data-norek_bjb="' + data.norek_bjb + '" data-norek_bjbs="' + data.norek_bjbs + '" data-npwp="' + data.npwp + '"' + '" data-aktif="' + data.aktif + '"' +
+                    ' data-norek_bjb="' + data.norek_bjb + '" data-norek_bjbs="' + data.norek_bjbs + '" data-npwp="' + data.npwp + '"' + '" data-aktif="' + data.aktif + '"' + '" data-matkulid="' + data.matkulID + '"' +
                     ' >' +
                     '<i class="fa fa-edit"></i> Sunting' +
                     '</button>' +
@@ -579,6 +579,7 @@
                     modal.find('input[name="tanggal_lahir"]').val(data.tanggal_lahir);
                     modal.find('input[name="alamat"]').val(data.alamat);
                     modal.find('.unitID').val(data.unitid).trigger('change');
+                    modal.find('.matkulID').val(data.matkulid).trigger('change');
                     modal.find('.status_kawin').val(data.status_kawin).trigger('change');
                     modal.find('select[name="pns_status"]').val(data.pns_status).trigger('change');
                     modal.find('input[name="jumlah_tanggungan"]').val(data.jumlah_tanggungan);

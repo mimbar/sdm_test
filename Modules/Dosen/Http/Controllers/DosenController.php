@@ -55,7 +55,7 @@ class DosenController extends Controller
                 'masa_kerja' => Carbon::createFromFormat('d-m-Y', $request->input('tanggal_masuk'))->age,
                 'status_dosen' => $request->input('status_dosen'),
                 'unitID' => $request->input('unitID'),
-                'mata_kuliah' => $request->input('mata_kuliah'),
+                'matkulID' => $request->input('matkulID'),
                 'nik' => $request->input('nik'),
                 'npwp' => $request->input('npwp'),
                 'golonganID' => $request->input('golonganID'),
@@ -101,7 +101,7 @@ class DosenController extends Controller
             $dosen->masa_kerja = Carbon::createFromFormat('d-m-Y', $request->input('tanggal_masuk'))->age;
             $dosen->status_dosen = $request->input('status_dosen');
             $dosen->unitID = $request->input('unitID');
-            $dosen->mata_kuliah = $request->input('mata_kuliah');
+            $dosen->matkulID = $request->input('matkulID');
             $dosen->nik = $request->input('nik');
             $dosen->npwp = $request->input('npwp');
             $dosen->golonganID = $request->input('golonganID');
