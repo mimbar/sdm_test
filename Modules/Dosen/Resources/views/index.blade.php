@@ -4,7 +4,7 @@
     <div class="content">
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h5 class="card-title">Data Pegawai</h5>
+                <h5 class="card-title">Data Dosen</h5>
                 <div class="header-elements">
                     <div class="btn-group">
                         <button class="btn bg-warning kalkulasi">
@@ -22,7 +22,7 @@
 
 
             <div class="table-responsive">
-                <table class="table table-hover table-sm dtpegawai" style="width: 100%">
+                <table class="table table-hover table-sm dtdosen" style="width: 100%">
                     <thead>
                     <tr class="text-center">
                         <th>#</th>
@@ -46,7 +46,7 @@
         <div class="modal-dialog modal-full">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Pegawai</h5>
+                    <h5 class="modal-title">Data Dosen</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -162,20 +162,29 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <label>Status Kepegawaian</label>
-                                        <select name="status_pegawai" class="form-control status_pegawai">
-                                            @foreach($statusPegawai as $status)
+                                    <div class="col-sm-4">
+                                        <label>Status Dosen</label>
+                                        <select name="status_dosen" class="form-control status_dosen">
+                                            @foreach($statusDosen as $status)
                                                 <option value="{{ $status->id }}">{{ $status->nama }}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label>Unit</label>
                                         <select name="unitID" class="form-control unitID">
                                             @foreach($unitkerja as $unit)
                                                 <option value="{{ $unit->id }}">{{ $unit->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Mata Kuliah</label>
+                                        <select name="mata_kuliah" class="form-control mata_kuliah">
+                                            @foreach($mata_kuliah as $mk)
+                                                <option value="{{ $unit->id }}">{{ $mk->nama }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -291,7 +300,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="datauploadfoto">
-                            <form action="pegawai/upload" class="dropzone" id="my-awesome-dropzone"
+                            <form action="dosen/upload" class="dropzone" id="my-awesome-dropzone"
                                   enctype="multipart/form-data"></form>
                         </div>
                     </div>
@@ -352,13 +361,13 @@
                 type: 'success',
                 progressBar: true,
             }).show();
-            $('.dtpegawai').LoadingOverlay("show", {
+            $('.dtdosen').LoadingOverlay("show", {
                 image: "",
                 fontawesome: "fa fa-cog fa-spin"
             });
 
             $.ajax({
-                url: '{{ route('pegawai.pegawai.kalkulasi') }}',
+                url: '{{ route('dosen.dosen.kalkulasi') }}',
                 type: 'PATCH',
                 success: function (response) {
                     if (response.code === 200) {
@@ -368,7 +377,7 @@
                             type: 'success',
                             progressBar: true,
                         }).show();
-                        dtpegawai.ajax.reload();
+                        dtdosen.ajax.reload();
                     } else if (response.code === 500) {
                         new Noty({
                             theme: ' alert bg-danger text-white alert-styled-left p-0',
@@ -379,8 +388,8 @@
                     } else {
                         alert('Hubungi Admin!');
                     }
-                    dtpegawai.ajax.reload();
-                    $('.dtpegawai').LoadingOverlay("hide");
+                    dtdosen.ajax.reload();
+                    $('.dtdosen').LoadingOverlay("hide");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);
@@ -400,10 +409,10 @@
                 id = modal.find('input[name="id"]').val(),
                 values = $(':input').serialize(), url, method;
             if ($.isNumeric(id)) {
-                url = '{{ route("pegawai.pegawai.update") }}';
+                url = '{{ route("dosen.dosen.update") }}';
                 method = 'PATCH';
             } else {
-                url = '{{ route("pegawai.pegawai.create") }}';
+                url = '{{ route("dosen.dosen.create") }}';
                 method = 'POST';
             }
 
@@ -432,7 +441,7 @@
                     } else {
                         alert('Hubungi Admin!');
                     }
-                    dtpegawai.ajax.reload(function () {
+                    dtdosens.ajax.reload(function () {
                         $(".dataTables_scrollBody").scrollTop(scrollPos);
                         $('body').LoadingOverlay("hide", true);
                     }, false);
@@ -445,7 +454,7 @@
 
         });
 
-        let dtpegawai = $('.dtpegawai').DataTable({
+        let dtdosen = $('.dtdosen').DataTable({
             "scrollX": true,
             "ordering": false,
             scrollY: 350,
@@ -457,7 +466,7 @@
             searching:false,
             info: false,
             "ajax": {
-                "url": "{{ route('dt.pegawai.all') }}",
+                "url": "{{ route('dt.dosen.all') }}",
             },
             columns: [
                 {
@@ -532,7 +541,7 @@
                     ' data-id="' + data.id + '" data-nidn="' + data.nidn + '" data-nip="' + data.nip + '"  data-nopeg="' + data.nopeg + '"  data-nik="' + data.nik + '" data-gender="' + data.gender + '"' + '" data-gelar_depan="' + data.gelar_depan + '"' +
                     ' data-nama="' + data.nama + '" data-gelar_belakang="' + data.gelar_belakang + '"' + '" data-tempat_lahir="' + data.tempat_lahir + '"' + '" data-tanggal_lahir="' + data.tanggal_lahir + '"' +
                     ' data-alamat="' + data.alamat + '" data-pns_status="' + data.pns_status + '" data-unitid="' + data.unitID + '"' + '" data-status_kawin="' + data.status_kawin + '"' + '" data-jumlah_tanggungan="' + data.jumlah_tanggungan + '"' +
-                    ' data-status_pegawai="' + data.status_pegawai + '" data-tanggal_masuk="' + data.tanggal_masuk + '"' + '" data-masa_kerja="' + data.masa_kerja + '"' + '" data-golonganid="' + data.golonganID + '"' +
+                    ' data-status_dosen="' + data.status_dosen + '" data-tanggal_masuk="' + data.tanggal_masuk + '"' + '" data-masa_kerja="' + data.masa_kerja + '"' + '" data-golonganid="' + data.golonganID + '"' +
                     ' data-ruangid="' + data.ruangID + '" data-strukturalid="' + data.strukturalID + '"' + '" data-fungsionalid="' + data.fungsionalID + '"' + '" data-norek_mandiri="' + data.norek_mandiri + '"' +
                     ' data-norek_bjb="' + data.norek_bjb + '" data-norek_bjbs="' + data.norek_bjbs + '" data-npwp="' + data.npwp + '"' + '" data-aktif="' + data.aktif + '"' +
                     ' >' +
@@ -573,7 +582,7 @@
                     modal.find('.status_kawin').val(data.status_kawin).trigger('change');
                     modal.find('select[name="pns_status"]').val(data.pns_status).trigger('change');
                     modal.find('input[name="jumlah_tanggungan"]').val(data.jumlah_tanggungan);
-                    modal.find('.status_pegawai').val(data.status_pegawai).trigger('change');
+                    modal.find('.status_dosen').val(data.status_dosen).trigger('change');
                     modal.find('input[name="tanggal_masuk"]').val(data.tanggal_masuk);
                     modal.find('input[name="masa_kerja"]').val(data.masa_kerja);
                     modal.find('.golonganID').val(data.golonganid);

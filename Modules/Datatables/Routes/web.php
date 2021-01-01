@@ -66,4 +66,11 @@ Route::group([
     ], function () {
         Route::post('all', 'KitchenController@allPegawai')->name('all');
     });
+
+    Route::group([
+        'prefix' => 'dosen',
+        'as' => 'dosen.',
+    ], function () {
+        Route::post('all', 'KitchenController@allDosen')->name('all');
+    });
 });

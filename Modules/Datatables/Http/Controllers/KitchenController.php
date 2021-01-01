@@ -10,7 +10,9 @@ use Modules\Auth\Entities\Role;
 use Modules\Auth\Entities\User;
 use Modules\Master\Entities\GRP;
 use Modules\Master\Entities\Pegawai;
+use Modules\Master\Entities\Dosen;
 use Modules\Master\Entities\StatusPegawai;
+use Modules\Master\Entities\StatusDosen;
 use Modules\Master\Entities\UnitKerja;
 
 class KitchenController extends Controller
@@ -54,5 +56,11 @@ class KitchenController extends Controller
     {
         $pegawai = Pegawai::with('unit')->get();
         return datatables()->of($pegawai)->toJson();
+    }
+
+    public function allDosen()
+    {
+        $dosen = Dosen::with('unit')->get();
+        return datatables()->of($dosen)->toJson();
     }
 }
